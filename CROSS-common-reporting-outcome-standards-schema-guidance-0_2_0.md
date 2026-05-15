@@ -264,6 +264,46 @@ Non-disclosure is a disqualifier. It is not treated as an error that can be reme
 
 ---
 
+## Part 5-A: Scope Attribution and Outcome Credit in Practice
+
+### When the additionality declaration is triggered
+
+The additionality declaration is triggered whenever concurrent funding is disclosed under Part VI of the standard. If an applicant discloses any active grants, investments, or revenue sources related to the scope of this application in the prior 24 months, the declaration is required as part of the entry specification. It is not an optional supplement. Failure to submit it when concurrent funding has been disclosed is treated as a gate failure at entry, not as a rigor-tier gap.
+
+The trigger is the disclosure itself, not the funder's subsequent assessment of whether the concurrent funding overlaps materially. An applicant who is uncertain whether a given funding relationship is material to the scope should disclose it and address the scope boundary in the declaration.
+
+### What "scope boundary" means in practice
+
+The scope boundary is the applicant's answer to a specific question: what work, deliverables, or costs does this grant fund that the concurrently disclosed sources do not?
+
+The scope boundary must be specific enough that a reviewer can make a binary determination about any proposed activity: does it fall inside this grant's scope or outside it? A scope boundary that says "this grant funds our research while our commercial revenue funds operations" may or may not be specific enough, depending on whether the research and operations are cleanly separable in practice. A scope boundary that names specific work packages, deliverable stages, geographic scope, or cost categories is more likely to pass review.
+
+Common failures at the scope boundary: naming the concurrent source and the grant without specifying what differs between them; asserting "no overlap" without explaining the mechanism by which overlap is avoided; specifying a boundary at a level of generality (for example, "this grant funds public goods work") that does not allow a reviewer to place any given activity inside or outside the boundary.
+
+For build-obligation applications, the scope boundary specifies which parts of the deliverable or which development stages this grant covers, and which the concurrent source covers. For change-obligation applications, it specifies which portion of the intervention pathway, population segment, geography, or time period is funded by this grant relative to others.
+
+### What attribution fractions are
+
+Attribution fractions are declared percentages that sum to 100 percent across all funders, and where relevant a residual category, that materially contributed to a reported outcome. They appear at the reporting stage, not at application entry, and are required whenever outcome or usage evidence is submitted at a gate configured at usage, outcome, or impact evidence scope.
+
+The fractions are a documentation commitment, not a causal proof claim. The applicant declares what percentage of the reported result they attribute to this funder's support, and names the main factors driving that determination: relative funding amounts, timing of disbursements, specific work packages each funder supported, or other distinctions that are documentable and defensible.
+
+The attribution rationale must accompany the fractions. A declaration without a rationale does not satisfy the field. The rationale should also acknowledge material uncertainties where they exist, including cases where the contribution of each funder cannot be cleanly separated.
+
+### The failure mode: absence, not imprecision
+
+The failure mode the standard is designed to catch is the absence of an attribution position where concurrent funding exists and outcome evidence is submitted. An applicant who submits outcome evidence claiming a result entirely to this funder, while having disclosed concurrent funding from another source for the same scope and period, has failed the attribution requirement whether or not the fractions are precisely calculable.
+
+Imprecision in the fractions is not a failure by itself. If the applicant has made a genuine documented effort to attribute the result across funders and the rationale is present and coherent, modest uncertainty in the percentages does not produce a failing finding. The reviewer's job is to assess whether an attribution position is present and internally coherent with the concurrent funding disclosure and the additionality declaration, not to verify the mathematical accuracy of the percentages.
+
+### How reviewers assess attribution
+
+Reviewers confirm three things. First: is an additionality declaration present? If concurrent funding was disclosed and no declaration was submitted, note the gate failure. Second: is the scope boundary specific enough to adjudicate? A boundary too vague to determine whether a given activity falls inside or outside the grant's scope requires clarification before the entry gate can pass. Third (at reporting stage, not entry): is an outcome credit attribution statement present for any evidence submitted at usage, outcome, or impact scope? If the statement is present, is it internally coherent with the additionality declaration and the indicator specification? If attribution fractions for the same indicator change across reporting periods, is the change documented?
+
+Reviewers do not re-derive the attribution fractions from first principles. They assess internal coherence, not mathematical correctness.
+
+---
+
 ## Part 6: Adverse Signal Disclosure in Practice
 
 ### What the Adverse-Signal Engagement Principle Core Standard requires in the grant context
@@ -355,3 +395,77 @@ For build-obligation rounds where the coordinating party engagement dimension is
 For change-obligation rounds: applicants who cannot name existing alternatives to their proposed solution for the stated beneficiary population have not diagnosed a problem; they have proposed a solution in search of one. The check does not ask applicants to demonstrate that no competition exists; it asks them to demonstrate awareness of the landscape and to explain why existing approaches are insufficient for the stated population.
 
 An applicant who names existing alternatives and explains specifically why those alternatives do not serve the stated population under the stated conditions has completed the beneficiary validation exercise. An applicant who asserts that nothing comparable exists without evidence of having looked has not. When existing tools address the stated FROM state for the stated population, the applicant must explain what additional value their intervention provides.
+
+---
+
+## Part 10: On-Chain Execution and Verification Instruments
+
+### When this section applies
+
+The on-chain execution and verification instruments subsection of Part V applies when the primary deliverable is a smart contract, a protocol, or an on-chain system, and the obligation object is the contract's behavior under specified conditions rather than a count of discrete outputs or a narrative artifact. In these cases, "did the deliverable meet its completion criteria" is answered by behavioral verification, not by checking that a file was published or that a number reached a target.
+
+The key diagnostic: is the thing being funded a system whose correctness is a property of how it behaves, not just a property of whether it exists? A library that is published and documented is assessed against output evidence. A vault contract that is required to conserve balances under any sequence of deposits and withdrawals is assessed against behavioral properties. The second case triggers this section.
+
+Not every on-chain project falls into this category. A project that happens to involve a contract but whose primary obligation is a count of users or a published report is assessed under the standard measurement form fields. This section is for projects where the obligation object is the contract itself, and where the completion criteria cannot be expressed as a discrete count or a binary file-exists check.
+
+### What each required field means
+
+**Invariant specification.** An invariant is a property the contract must always satisfy or never violate, regardless of who interacts with it or in what order. The invariant specification is a human-readable statement of those properties written at a level of precision that a technically competent reviewer who did not write the contract can understand. It is the counterpart of the formal specification used in verification tools, written in prose.
+
+Examples of adequate invariant statements: "The contract must never release more tokens than were deposited, across any sequence of deposit and withdrawal operations by any number of users." "The protocol fee must not exceed the declared maximum rate for any transaction, regardless of order size." "The proposal execution function must not execute without the required number of valid signatures, as specified in the deployment parameters."
+
+An inadequate invariant statement: "The contract is secure." This is a direction, not an invariant. It cannot be checked and cannot fail.
+
+**Verification method.** This field names how conformance with the stated invariants will be demonstrated. The applicant selects one or more approaches and names the tool, firm, or framework: formal verification using a named model checker or theorem prover, independent security audit by a named firm or type of firm, on-chain invariant monitoring via a named watchdog contract or monitoring service, or manual review of named canonical transaction patterns from public chain data. The verification method must be one that a reviewer outside the applicant's organization can access or reproduce. "We ran internal tests" is not a verification method for this field.
+
+**Verification artifact.** This is the concrete deliverable that constitutes completion evidence. It is the thing the reviewer examines to confirm that the verification method was applied and that the invariants were satisfied. Three types satisfy the requirement: a public proof artifact produced by a named formal verification tool (accessible from a public repository or publication), an audit report from a named independent firm (published publicly or submitted to the funder with confirmation of the firm's independence), or a named contract address and a named query that an independent reviewer can execute from public chain data to reproduce the behavioral check.
+
+The verification artifact must be independently accessible. A document that the applicant holds and has not published, or a test suite that only the applicant can run, does not satisfy this field.
+
+**Failure surface.** At least one example of behavior that would indicate the invariant was violated, stated specifically enough that an observer monitoring the contract could recognize the failure. "If a deposit of X tokens followed by a withdrawal of X tokens results in a net token balance decrease for the depositor with no fees charged, the balance-conservation invariant has been violated" is a failure surface. "The contract fails" is not.
+
+The failure surface serves two purposes. It demonstrates that the applicant has thought concretely about failure modes, which is a signal of adequate specification. And it gives the verification instrument a concrete behavioral check to run, rather than an abstract property to assess.
+
+### Common mistakes
+
+The most common mistake is naming a test suite the applicant controls as the sole verification instrument. A test suite run by the same team that wrote the contract and benefits from a passing result does not satisfy the integrity standard, because the reviewer cannot independently confirm the result. Test suites may appear as supplementary evidence alongside an independent verification instrument. They do not replace one.
+
+A second common mistake is confusing the invariant specification with a description of what the contract does. What the contract does is its functionality. What the contract must always do or never do regardless of conditions is its invariants. A contract's purpose is to allow users to deposit and withdraw tokens; that is its functionality. Its invariant is that any sequence of deposits and withdrawals must leave the user no worse off than the stated fee schedule allows; that is what must be verified.
+
+A third mistake is specifying a verification method that produces a private artifact. An audit conducted by a named firm but with the report held confidential by the applicant does not satisfy this section. The artifact must be accessible to a reviewer who did not commission it.
+
+---
+
+## Part 11: Funder Obligations and Redress in Practice
+
+### The internal clarification mechanism and the structured appeals procedure
+
+These are two distinct instruments that serve different purposes. Applicants and grantees sometimes conflate them; the distinction matters because the appropriate remedy depends on which problem is present.
+
+The internal clarification mechanism is available first, and it is not a quasi-judicial proceeding. It is a structured way for an applicant or grantee to obtain a written explanation of how a specific gate decision was consistent with the published gate configuration, the applicable rubric, and the evidence on record. An applicant who received a completion failure and wants to understand how the funder applied the published criteria to their submission uses the clarification mechanism. The funder's obligation is to respond in writing within a named time bound, with an explanation anchored to the published configuration. The clarification mechanism does not have the authority to reverse decisions; it produces a record.
+
+The structured appeals procedure is available for procedural non-conformance claims: claims that the funder did not follow its own published gate configuration, infrastructure declaration, or conflict of interest framework in a way that materially affected the applicant or grantee. An applicant who believes the funder changed its gate criteria between application and decision without published justification, or that a conflicted reviewer participated in the decision, uses the appeals procedure. The appeals body assesses whether the funder followed the process it published, not whether the substantive scoring was correct.
+
+### What "funder obligation violation" means
+
+A funder obligation violation is a specific condition: the funder did not follow its own published gate configuration or infrastructure declaration in a way that materially affected an applicant or grantee. The violation has two components that must both be present.
+
+First, the deviation must be from the published configuration, not from an informal expectation. If the funder's published gate configuration does not require independent review at the completion gate, a decision made without independent review is not a violation of the published configuration. If the published configuration requires independent review and the funder waived it without documented justification, that is a deviation that may constitute a violation.
+
+Second, the deviation must have materially affected the applicant or grantee. A procedural irregularity that did not change the outcome and did not affect the applicant's ability to prepare is not a violation in the redress sense, even if it was sloppy practice. Material effect means the applicant or grantee was disadvantaged in a way that a conformant process would not have produced.
+
+Non-conformance at the program or infrastructure level (for example, failure to maintain a round configuration record) creates a conformance obligation for the funder but does not automatically give rise to an individual claim unless the failure materially affected a specific applicant or grantee.
+
+### What is and is not appealable
+
+Appeals under Part XI assess procedural grounds only. They address whether the funder followed the process it published. They do not reopen substantive scoring: a reviewer's assessment that an applicant's FROM state was not sufficiently specific is a substantive judgment that the appeals body does not second-guess, unless the applicant can show that the review was conducted by a person with an undisclosed conflict of interest, or that the published rubric criteria were not the ones actually applied.
+
+Appealable: the funder applied gate criteria that differ from what was published at round opening. The infrastructure declaration named a specific reviewer, and a different reviewer was used without documented justification. A conflict of interest violation occurred and was not remediated. The time window for a gate decision was materially shorter than published, and the applicant lost an opportunity to respond.
+
+Not appealable: a reviewer scored an indicator field differently than the applicant expected. The funder's overall program priorities shifted between rounds. A decision the applicant disagrees with on the merits but that was made following the published process.
+
+### Practical guidance on redress body structure
+
+Programs at Stage 1 of their development, or below a funder-defined threshold for program scale, may designate a single board member or an external advisor who did not participate in the original decision as the appeals body. The requirement is structural separation from the original decision-making panel, not organizational independence from the funder. A co-director who reviewed no applications in the round and has no conflict with the appellant satisfies this requirement.
+
+Programs at Stage 2 or above in their Grant Configurator progression should consider whether a single board member or advisor provides adequate structural separation given the volume and complexity of decisions being appealed. At this scale, the program may benefit from a standing advisory panel or a named external arbitrator. The independent redress mechanism referenced in Part XI of the standard is a more formal version of this for large-scale programs. It is optional under the standard but serves a function that becomes harder to discharge through informal channels as programs grow.

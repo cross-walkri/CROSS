@@ -205,6 +205,19 @@ This field replaces the constrained four-option data type list from version 0.1.
 | 2 | The measurement form is named but the classification along at least one axis conflicts with the construction methodology (e.g., described as quantitative but the methodology produces only binary results), OR the description is so general that axis classification cannot be determined. |
 | 1 | No measurement form description is present. |
 
+**On-chain verification check (apply when the primary deliverable is a smart contract, protocol, or on-chain system).** Before applying the Field 3 scores above, confirm whether the obligation object is a contract's behavioral properties rather than discrete outputs or a published artifact. If yes, the indicator must additionally contain four named sub-fields: invariant specification, verification method, verification artifact, and failure surface. Assess these as follows.
+
+**Reviewer question:** Is an invariant specification present? Is the verification method named? Is the verification artifact a type that an independent reviewer can access without contacting the applicant (a public audit report, a public proof artifact, or a named contract address and query against public chain data)?
+
+| Finding | Action |
+|---|---|
+| All four sub-fields present; verification artifact is independently accessible | Apply Field 3 score normally. No additional condition. |
+| Invariant specification present but verification method or artifact is absent | Score Field 3 at 2. Generate a condition: applicant must name an independent verification instrument before disbursement. |
+| Sole verification instrument is an applicant-controlled test suite with no independent instrument | Score Field 3 at 1. This is an integrity standard failure. The integrity standard (Standard 2, Section 4) requires at least one evidence source independent of the applicant. |
+| No on-chain behavioral indicator is present despite the primary deliverable being a contract or protocol | Score Field 3 at 1 on the behavioral indicator. This is a construction error, not a missing field. The applicant has specified an output indicator where a behavioral indicator is required. |
+
+Note: applicant-controlled test suites and private monitoring dashboards may appear as supplementary evidence. They do not satisfy the minimum verification requirement as the sole instrument for any indicator where the obligation object is a contract's behavioral properties.
+
 ---
 
 ### Field 4: Operational Definition
@@ -435,6 +448,35 @@ For retroactive obligation rounds: the disclosure must cover prior awards for th
 
 ---
 
+### Check 1-A: Scope Attribution and Outcome Credit (apply only when concurrent funding is disclosed)
+
+This check applies in addition to Check 1 wherever the concurrent funding disclosure is present. If Check 1 passes with no concurrent funding disclosed, this check does not apply.
+
+**Rigor tier check at entry.**
+
+**Test (additionality declaration):** Is an additionality declaration present? Does the scope boundary specify what this grant funds that concurrent sources do not, at a level of specificity that allows a reviewer to determine whether any proposed activity falls inside or outside this grant's scope?
+
+| Finding | Action |
+|---|---|
+| Additionality declaration present; scope boundary is specific enough to adjudicate | Pass at entry. Proceed to scoring. |
+| Additionality declaration present; scope boundary is too vague to adjudicate | Score as conditional (equivalent to a 2 on an indicator field). Condition: applicant must specify the scope boundary at sufficient precision before disbursement. |
+| Concurrent funding disclosed; no additionality declaration submitted | Gate failure at entry. Document: "additionality declaration absent despite concurrent funding disclosure." Close evaluation. |
+
+**Attribution fraction check at reporting stage (apply at any gate configured at usage, outcome, or impact evidence scope).**
+
+**Test:** Is an outcome credit attribution statement present? Does it cover all funders that materially contributed to the reported result? Do attribution fractions sum to 100 percent across named funders and any residual category? Is the attribution rationale documented?
+
+| Finding | Action |
+|---|---|
+| Attribution statement present; rationale documented; fractions sum to 100 percent | Pass. |
+| Attribution statement present but rationale is absent or fractions do not sum to 100 percent | Conditional. Generate a condition: applicant must complete the attribution statement before disbursement is confirmed. |
+| Outcome evidence submitted; no attribution statement present; concurrent funding was disclosed | Rigor-tier failure. Score equivalent to a 2 on the affected reporting field. |
+| Attribution statement assigns 100 percent of outcome credit to this funder where multiple concurrent funders are named for the same scope and period | Flag for committee review. This is an inconsistency with the concurrent funding disclosure. Request a revised attribution statement. |
+
+If attribution fractions change between reporting periods for the same indicator without a documented reason, note the change in the evaluation record and request documentation of the rationale and an assessment of prior-period comparability.
+
+---
+
 ### Check 2: Adverse Signal Disclosure
 
 **Test:** Has the applicant disclosed adverse signals relating to this application: prior rejections from similar programs, contradictory technical findings, or negative due diligence results from other funders?
@@ -454,6 +496,43 @@ For retroactive obligation rounds: the disclosure must cover prior awards for th
 **Tier 2 violations (disclosure required, qualified waiver possible):** Tier 2 violations discovered during or after review require remediation: retroactive recusal, review restart, or award cancellation, depending on the degree of influence the conflicted party had.
 
 **Finding options:** Pass (all declarations on file, submitted before review began, post-participation certifications complete, no Tier 1 or undisclosed Tier 2 conflicts identified), or Violation (document the tier, the relationship, and the remediation determination).
+
+---
+
+### Check 4: Funder-Side Conformance (for program administrators, not for reviewer assessment of individual applications)
+
+Note: the checks in this subsection are performed by program administrators, not by reviewers assessing individual applications. They confirm that the program itself is operating in conformance with Part XI of the standard before any round opens and when any deviation is discovered. Reviewers who discover a potential funder-side conformance gap during individual application review should flag it to the program administrator rather than recording it as a finding against the applicant.
+
+**Pre-round configuration check.**
+
+Before any round opens, confirm the following.
+
+**Test:** Did the funder publish a gate configuration before this round opened? Does the published configuration specify, for each active gate, the evidence scope, evidence strength, and infrastructure declaration (where gates are configured at independent review level or above)?
+
+| Finding | Action |
+|---|---|
+| Gate configuration published before round opened; all required elements present | Pass. |
+| Gate configuration published but infrastructure declaration absent where required | Conformance gap. Round may not open until the infrastructure declaration is completed and published. |
+| No gate configuration published before round opened | Conformance violation. Round should not proceed without a published configuration. |
+
+**Mid-round and post-decision deviation check.**
+
+**Test:** Did the gate configuration change between the round opening and the decision point? If yes, was the change documented with a rationale and submitted to a named authority before the gate was reached? Were applicants notified?
+
+| Finding | Action |
+|---|---|
+| No changes to the published configuration | Pass. |
+| Configuration changed; change documented with rationale; applicants notified before the gate | Documented deviation. Record in the round file. No conformance violation if process was followed. |
+| Configuration changed; change not documented or applicants not notified | Funder obligation violation. Administrator must determine whether the deviation materially affected any applicant or grantee and initiate remediation where it did. |
+
+**Appeals mechanism check.**
+
+**Test:** Has the program published an appeals procedure specifying what decisions are appealable, on what grounds, within what time window, and designating an appeals body structurally separate from the original decision-making panel?
+
+| Finding | Action |
+|---|---|
+| Appeals procedure published before round opened; appeals body designated | Pass. |
+| No appeals procedure published | Conformance gap. The program must publish an appeals procedure before any gate decisions are made that would be subject to appeal. |
 
 ---
 
