@@ -28,7 +28,15 @@ CROSS was designed to be portable across both failure modes. It separates the ev
 
 ## What CROSS specifies
 
-**Three obligation modes** correspond to three fundamentally different accountability structures. Build obligation applies where the deliverable is a specific artifact: the gate tests whether the delivered thing matches what was specified. Change obligation applies where the goal is a measurable shift in an external condition: the entry specification gate requires a baseline, a target in the same units, a defined population, a named data source, and a mechanism connecting the intervention to the anticipated shift. This prevents aspiration language from entering the record at all. Retroactive obligation applies where work is already done: the gate tests whether documented impact is credibly attributed to prior activity.
+![Three obligation modes: Build, Change, and Retroactive, each shown as a distinct accountability structure with its gate test.](assets/obligation-modes.png)
+
+**Three obligation modes** correspond to three fundamentally different accountability structures.
+
+Build obligation applies where the deliverable is a specific artifact. Gate tests confirm whether the delivered thing matches what was specified. This is the right mode for software tools, research reports, infrastructure deployments, and any work where completion has a clear binary test.
+
+Change obligation applies where the goal is a measurable shift in an external condition. The entry specification gate requires a baseline value, a target in the same units, a defined population, a named data source, and a stated mechanism connecting the intervention to the anticipated shift. This prevents aspiration language from entering the record because a grantee cannot name a FROM state without having diagnosed the problem before designing the solution.
+
+Retroactive obligation applies where work is already done. Gate tests confirm whether the documented impact is credibly attributed to the prior activity. This is the right mode for retrospective public goods funding, recognition of past contributions, and programs where the work precedes the funding decision.
 
 **A four-gate sequence** governs each funding release: entry specification before any funds move, one or more milestone gates during delivery, a completion gate at close, and an optional continuation gate determining whether a grantee enters subsequent rounds. Programs configure which gates apply and at what rigor tier, and publish that configuration before any application opens.
 
@@ -65,6 +73,24 @@ Compatibility statements are formally published rather than asserted. CROSS curr
 Fixing GIGO at the source produces value that compounds with every layer up the grants ecosystem. Grantees encounter questions that specify what they must prove. Reviewers assess against criteria written before they arrived. Operators run rounds that produce comparable data automatically. Analysts consume structured, aggregated data instead of manually reconciling incommensurable reports. Institutional co-funders receive compliance output as a byproduct of the round being run correctly. Strategic planners, deciding how to allocate billions across sectors and geographies, are currently making those decisions on GIGO. CROSS+WALKRI data, accumulated across programs and rounds at scale, is what eventually gives them something real to work with.
 
 The strategic planning benefit materialises as adoption accumulates. The foundation is correct. The compounding takes time and scale.
+
+---
+
+## What conformant rounds produce
+
+The value CROSS creates is specific to each layer of the grants ecosystem.
+
+**Program operators** gain a published, auditable obligation architecture before any application is submitted. The rubric is not constructed post-hoc to justify decisions already made. It is declared in the round specification, tested against at each gate, and exportable as a DAOIP-5 GrantPool object. Operators can configure exactly where evidentiary pressure falls: at the entry specification gate for programs where baseline specificity is the failure mode, or at the completion and continuation gates for programs where outcome verification is the challenge.
+
+**Reviewers** assess against criteria that existed before anyone applied. The entry specification gate means aspiration language cannot pass a structural test regardless of how compellingly it is written. A reviewer can confirm whether a claimed FROM state specifies a measurable condition in a defined population with a named data source, or flag it as a D2 failure, without exercising subjective judgment. The rubric does the structural work.
+
+**Grantees** know before applying what they must demonstrate at each payment gate. In Change mode, they know they must produce a baseline measurement, a target, a population, and a data source, before writing anything else. In Build mode, they know the deliverable specification is what gets tested, not the aspiration behind it. This protects grantees from vague obligations as much as it protects funders from vague commitments.
+
+**Analysts** gain structurally comparable obligation declarations across programs and epochs. A portfolio of CROSS-conformant rounds can answer questions that currently require months of manual reconstruction: how many programs have Change-mode obligations versus Build-mode? What proportion passed milestone gates at the highest rigor tier? How does the portfolio's attribution stance distribution compare across rounds? These questions cannot be answered at all from incommensurable round records. They answer themselves from CROSS-conformant data.
+
+**Institutional co-funders** receive OECD DAC, USAID PIRS, and IRIS+ compliance as structural outputs of the round being configured correctly. A development agency co-funding a program running CROSS does not need to impose separate reporting requirements or conduct a separate data quality assessment. The Attestation Corpus query and Cohort Position assessment also give institutional funders cross-program grantee history that previously required expensive independent research.
+
+**Platform providers** gain structural comparability across every program running on the platform from a single conformance requirement. Multi-program portfolio analysis, cross-round grantee tracking, and institutional reporting outputs are available without custom integration between programs.
 
 ---
 
