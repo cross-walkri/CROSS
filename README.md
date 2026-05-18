@@ -10,7 +10,7 @@ CROSS fixes that. It specifies what must be demonstrated at each payment gate, d
 
 **CROSS is the first standard that has ever required this decision to be written down before the round opens.**
 
-![GIGO pipeline: obligation never specified and questions not designed to measure enter a funnel, producing data that cannot be compared, aggregated, or trusted. No existing tool touches the source.](assets/gigo-pipeline.png)
+![GIGO pipeline: obligation never specified and questions not designed to measure enter a funnel, producing data that cannot be compared, aggregated, or trusted. No existing tool touches the source.](assets/cross-walkri-gigo-problem.png)
 
 ---
 
@@ -28,7 +28,7 @@ CROSS was designed to be portable across both failure modes. It separates the ev
 
 ## What CROSS specifies
 
-![Three obligation modes: Build, Change, and Retroactive, each shown as a distinct accountability structure with its gate test.](assets/obligation-modes.png)
+![Three obligation modes: Build, Change, and Retroactive, each shown as a distinct accountability structure with its gate test.](assets/cross-obligation-modes.png)
 
 **Three obligation modes** correspond to three fundamentally different accountability structures.
 
@@ -52,7 +52,7 @@ Retroactive obligation applies where work is already done. Gate tests confirm wh
 
 ## Compatibility is the point
 
-![CROSS+WALKRI stack: any form builder or grants platform below, CROSS+WALKRI in the middle providing obligation architecture and field quality, Web3 and institutional standards above. One conformant round, both directions, no extra work.](assets/stack-diagram.png)
+![CROSS+WALKRI stack: any form builder or grants platform below, CROSS+WALKRI in the middle providing obligation architecture and field quality, Web3 and institutional standards above. One conformant round, both directions, no extra work.](assets/cross-walkri-compatibility-stack.png)
 
 CROSS sits in the middle of the grants stack, not at the top or bottom. Form builders and grants platforms sit below it and implement it. Programs, institutional reporting, and portfolio intelligence sit above it and build on it.
 
@@ -68,7 +68,7 @@ Compatibility statements are formally published rather than asserted. CROSS curr
 
 ## Who this is built for
 
-![Cascade pyramid: Grantees and Reviewers at the base, Operators and Platform Providers, Analysts and Institutional Funders, Strategic Planners at the apex. Smaller decisions with immediate feedback at the base; larger decisions with billions at stake at the top. Strategic level value requires ecosystem-wide adoption to materialise.](assets/for-all-pyramid.png)
+![Cascade pyramid: Grantees and Reviewers at the base, Operators and Platform Providers, Analysts and Institutional Funders, Strategic Planners at the apex. Smaller decisions with immediate feedback at the base; larger decisions with billions at stake at the top. Strategic level value requires ecosystem-wide adoption to materialise.](assets/cross-walkri-value-cascade.png)
 
 Fixing GIGO at the source produces value that compounds with every layer up the grants ecosystem. Grantees encounter questions that specify what they must prove. Reviewers assess against criteria written before they arrived. Operators run rounds that produce comparable data automatically. Analysts consume structured, aggregated data instead of manually reconciling incommensurable reports. Institutional co-funders receive compliance output as a byproduct of the round being run correctly. Strategic planners, deciding how to allocate billions across sectors and geographies, are currently making those decisions on GIGO. CROSS+WALKRI data, accumulated across programs and rounds at scale, is what eventually gives them something real to work with.
 
