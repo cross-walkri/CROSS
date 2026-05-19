@@ -1,14 +1,14 @@
 ---
 title: CROSS+WALKRI Primitives Foundation
-version: 0.1.3
-date: 2026-05-18
+version: 0.1.4
+date: 2026-05-19
 license: CC0
 status: Working draft. All provisions in CROSS and WALKRI are derived from or should be expressible as combinations of the primitives defined here. When a new provision cannot be derived from existing primitives, the missing primitive must be named and added here before the provision is written.
 ---
 
 # CROSS+WALKRI Primitives Foundation
 
-Version 0.1.3 | 2026-05-18 | CC0
+Version 0.1.4 | 2026-05-19 | CC0
 
 ---
 
@@ -398,6 +398,20 @@ The classification of whether an effect was specified in the entry gate or disco
 
 ---
 
+### Beneficiary Accountability Gate
+
+A gate element requiring that the people or communities served by a funded program participate in verifying what was delivered, not merely that independent third parties confirm delivery. Distinguished from independent review (a level within Evidence Strength) by specifying who the verifier must be: verification by a qualified external evaluator does not satisfy a beneficiary accountability gate unless the evaluator's methodology includes structured input from beneficiaries. Distinguished from usage evidence (which measures adoption from sources outside the applicant's control) by requiring active participation in verification rather than passive measurement of use.
+
+Three configuration elements: the beneficiary population (the named group whose participation is required, defined at the entry specification gate using the same population definition as the condition change or access provision public benefit mechanism), the participation mechanism (how beneficiary input is collected and documented), and the minimum participation threshold (what proportion of the beneficiary population must have participated for the gate to be satisfied).
+
+The beneficiary accountability gate addresses a specific structural gap in the standard evidence strength framework: a program can satisfy independent review by evaluators who are technically qualified but structurally distant from the people the program serves. The beneficiary accountability gate prevents this substitution by making beneficiary participation a gate condition rather than an optional quality enhancement.
+
+**Relationships:** An extension of Evidence Strength (Layer 4): the beneficiary accountability gate is a specific configuration of the independent review evidence strength level in which the independent reviewer must be, or must systematically incorporate, the beneficiaries themselves. Connects to the Public Benefit Mechanism primitive (Layer 3): the beneficiary accountability gate is most directly applicable to condition change and access provision mechanism types, where a defined beneficiary population is the primary basis for the public goods claim. A program claiming condition change in a named population that does not include beneficiary participation in verification is claiming change on behalf of a population while excluding that population from the accountability mechanism.
+
+**Applications:** CROSS Part XII (CRS ProPack beneficiary feedback as gate element; World Vision LEAP beneficiary verification mechanism). Humanitarian and community-development grants programs. Any program claiming a condition change or access provision public benefit mechanism with a named beneficiary population.
+
+---
+
 ### Attestation Corpus
 
 The set of claims about an entity made by parties outside the entity's control, retrievable from named public sources without the entity's participation or submission. Distinguished from evidence (applicant-submitted), gate records (funder-issued for this entity specifically), and standing evidence (institutional endorsements submitted by the applicant) by being third-party, public, and queryable independently. The Attestation Corpus includes on-chain attestations (EAS attestations across chains, KarmaGAP grant and milestone records, RPGF impact attestations), off-chain program completion records (Gitcoin Explorer, Giveth, Open Collective), and named endorsements from identifiable ecosystem participants. The Attestation Corpus is a funder-side data collection, not an applicant disclosure requirement. Its contents inform the track record assessment but are not substitutes for the applicant's own Obligation Fulfillment Record.
@@ -570,6 +584,46 @@ The classification of a round's relationship to prior rounds in the same program
 
 ---
 
+### Portfolio-level Continuation Benchmark
+
+A funder-declared threshold that the program as a whole must meet to justify continued operation, distinct from individual grantee continuation gates. The benchmark holds the funder's program accountable rather than its individual grantees. Three configuration elements: the metric (what is measured at the program level, such as percentage of grants reaching a specified development stage, total ecosystem adoption attributable to the portfolio, or aggregate outcome evidence across the cohort), the threshold (the minimum level that constitutes program continuation), and the review period (the span across which the benchmark is assessed, typically multiple grant cycles).
+
+Distinguished from the individual continuation gate (which governs a single grantee's eligibility for subsequent funding) and from portfolio analysis outputs (which are analytical tools, not accountability mechanisms) by being a binding condition on the funder's own program continuation. The portfolio-level benchmark applies to the program operator: if the portfolio as a whole does not meet the declared threshold, the program design must be revised before the next cycle opens.
+
+**Relationships:** Derived from Portfolio Position and Evidence Scope. The benchmark metric must be at least as rigorous as the evidence scope required at individual grantee completion gates. A program requiring usage evidence at the grantee completion gate cannot credibly declare a portfolio benchmark based on output evidence at the program level. The benchmark threshold is declared at the entry specification gate for the program (not for individual rounds) and published before any grantee applies.
+
+**Applications:** CROSS Part XII (SBIR/STTR portfolio-level commercialization benchmarks). Program operator accountability in multi-cycle programs. Program continuation decision at the funder level.
+
+---
+
+### Inter-cycle Reflection Stage
+
+A structured learning artifact produced between grant cycles that captures what the prior cycle demonstrated, what assumptions were confirmed or disconfirmed, and how that learning will change the design of the next cycle. The inter-cycle reflection stage is distinct from the continuation gate (which determines individual grantee eligibility) by operating at the program level and by requiring that learning be formally captured and published before the next cycle's entry specification opens.
+
+Three required elements: the reflection artifact (a published document or structured record capturing the prior cycle's findings against the entry specification that opened it), the design response (a documented account of which prior cycle findings are being addressed in the next cycle's design), and the publication timing (the reflection artifact must be published before the next cycle's entry specification opens, not after).
+
+Without an inter-cycle reflection stage, successive grant cycles cannot be distinguished from independent experiments that share a name. The reflection stage is the structural mechanism that makes a multi-cycle program cumulative rather than repetitive.
+
+**Relationships:** Derived from Obligation Fulfillment Record (Layer 3) and Sustainability Stance (Layer 6), applied at the program level rather than the individual project level. The inter-cycle reflection stage is the program-level analogue of the applicant's Obligation Fulfillment Record: both require documenting what was committed to, what was delivered, and what should change as a result. The reflection artifact is input to the next cycle's entry specification gate.
+
+**Applications:** CROSS Part XII (World Vision LEAP inter-cycle reflection stage). Multi-cycle program design. Program-level learning loop. Entry specification design for successive rounds.
+
+---
+
+### Multi-cycle Retrospective Assessment
+
+An assessment spanning multiple grant cycles that evaluates cumulative progress rather than single-cycle delivery. Distinct from the single-cycle completion gate (which evaluates delivery against one round's entry specification) and from the portfolio-level continuation benchmark (which holds the funder's program accountable) by aggregating evidence across multiple completed cycles for a single program or grantee.
+
+Three forms: cumulative outcome assessment (measuring the aggregate change produced across all cycles of a program against the program's original goal), longitudinal grantee assessment (assessing a returning grantee's cumulative contribution across all prior cycles with the current funder), and cross-cycle learning assessment (evaluating whether each cycle's design demonstrably incorporated learnings from prior cycles).
+
+The multi-cycle retrospective assessment is the only gate type that can provide evidence for intermediate and long-term outcomes as defined in the Theory of Change Hierarchy. Single-cycle completion gates can only reach short-term outcomes. Programs claiming to produce intermediate or long-term outcomes must configure a multi-cycle retrospective assessment to substantiate those claims.
+
+**Relationships:** Derived from Theory of Change Hierarchy (Layer 6) and Obligation Fulfillment Record (Layer 3). The ToC hierarchy determines what outcome level is assessable at each gate type: single-cycle completion gates reach short-term outcomes; multi-cycle retrospective assessment reaches intermediate and long-term outcomes. The multi-cycle assessment requires a series of Obligation Fulfillment Records across cycles as its evidence base.
+
+**Applications:** CROSS Part XII (NED Cumulative Assessment Report). Long-term outcome substantiation. Multi-year program evaluation. Intermediate outcome evidence for institutional funders requiring it.
+
+---
+
 ### Portfolio Analysis Outputs
 
 The five analytical outputs that a portfolio with declared ToC pathway registries enables:
@@ -618,6 +672,10 @@ The following relationships between primitives are load-bearing for the standard
 - Governance resilience constrains what sustainability stance is credible at the continuation gate: single-point-of-failure governance cannot support a sustained stance without a named succession mechanism.
 - Development stage constrains coherent obligation mode assignment: the declared stage must be consistent with the evidence available at both the entry and completion gates.
 - Obligation fulfillment record is required at the entry gate for returning applicants and is the primary track record evidence at the continuation gate.
+- Portfolio-level continuation benchmark holds the funder's program accountable rather than individual grantees; its metric must be at least as rigorous as the evidence scope required at individual completion gates.
+- Inter-cycle reflection stage is the program-level analogue of the applicant's obligation fulfillment record; it is input to the next cycle's entry specification gate and is required before that gate opens.
+- Multi-cycle retrospective assessment is the only gate type that can substantiate intermediate and long-term outcomes as defined in the ToC hierarchy; single-cycle completion gates reach only short-term outcomes.
+- Beneficiary accountability gate is a specific configuration of independent review evidence strength in which the beneficiary population must participate in verification; it cannot be satisfied by technically qualified evaluators who exclude beneficiary input.
 
 ---
 
@@ -654,6 +712,7 @@ Frame Language Grammar (Methodology/frame-language-grammar-0_1_0.md): the method
 
 | Version | Date | Summary |
 |---|---|---|
+| 0.1.4 | 2026-05-19 | Four new primitives added from worldwide compatibility research findings. Layer 4: Beneficiary Accountability Gate (gate element requiring beneficiary population participation in verification, not substitutable by technically qualified but beneficiary-distant independent review; derived from CRS ProPack and World Vision LEAP). Layer 7: Portfolio-level Continuation Benchmark (funder-declared program-level threshold holding the program accountable rather than individual grantees; derived from SBIR/STTR commercialization benchmarks), Inter-cycle Reflection Stage (structured learning artifact produced between grant cycles, required before next cycle's entry specification opens; derived from World Vision LEAP), Multi-cycle Retrospective Assessment (assessment spanning multiple cycles, the only gate type that can substantiate intermediate and long-term ToC outcomes; derived from NED Cumulative Assessment Report). Total: 36 primitives across 7 layers. |
 | 0.1.3 | 2026-05-18 | Three new primitives added. Layer 2: On-chain Identity Anchor (canonical wallet address for cross-program identity matching, distinct from Disbursement Authority). Layer 4: Attestation Corpus (third-party verifiable claims about an entity from named public sources, queryable without entity participation). Layer 7: Cohort Position (applicant's relationships to other entities in the same funding round, covering personnel, wallet, endorser, and co-applicant overlap). Total: 32 primitives across 7 layers. |
 | 0.1.2 | 2026-05-18 | Layer 2: Three new identity primitives added. Revenue Architecture: four types (grant-only, fee-for-service, commercial, hybrid) anchoring additionality declarations for entities with commercial revenue models. Disbursement Authority: three states (individual, governed, delegated) providing the operational anchor for organizational accountability. Governance Resilience: three states (single, partial, resilient) constraining what sustainability stances are credible at continuation gates. Layer 3: Two new obligation primitives added. Obligation Fulfillment Record: three states (fulfilled, partially fulfilled, unfulfilled) required for returning applicants and applicants citing prior work. Development Stage: five stages (proof of concept through retroactive recognition) constraining coherent obligation mode assignment and allowing funder cohort targeting. CROSS provisions derived: Part II dimensions for revenue architecture, governance resilience, and development stage; Part IV extensions for disbursement authority (fifth organizational identity field), obligation fulfillment record (returning applicant pre-condition), and development stage declaration. |
 | 0.1.1 | 2026-05-18 | Layer 3: Two derived primitives added. Public Benefit Mechanism: four mechanism types (output production, access provision, condition change, ecosystem shift) derived from Evidence Scope applied at the eligibility claim context. Access Condition: the declared terms under which a public benefit mechanism holds, paired with an evidence form for independent verification. Both primitives are applications of existing Layer 4 (Evidence Scope) and Layer 5 (Evidence Form) primitives to the eligibility declaration context. CROSS provision derived: Part II public benefit mechanism dimension and Part IV access condition declaration requirement. |

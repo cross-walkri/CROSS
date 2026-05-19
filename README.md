@@ -26,6 +26,18 @@ CROSS was designed to be portable across both failure modes. It separates the ev
 
 ---
 
+## The correct order of operations
+
+Across the 95+ frameworks documented in this corpus, from the Hewlett Foundation's evaluation approach to USAID PIRS to OECD DAC criteria, a consistent pattern emerges: data quality problems in grant programs trace to specification decisions made before the first application was submitted. Round design is where funding governance either happens with intention or happens by default. Application design and field specification are where that governance meets the applicant. The quality of decisions made at these two stages determines whether the data a program produces can be compared, aggregated, trusted, or used.
+
+The obligation architecture that serious grantmakers developed across international development, philanthropy, public health, research funding, and environmental finance is not bureaucratic preference. It is the correct order of operations: specify what grantees must demonstrate before anyone applies; collect evidence against that specification; evaluate delivery before funds continue; carry what you learned into the next round. Every serious grants institution outside the Web3 ecosystem arrived at this sequence through experience with the consequences of inverting it.
+
+Web3 grants programs inverted the order by inheriting a founding template that was designed for a different problem. The Moloch DAO ragequit addressed pre-disbursement pool governance among known contributors. Quadratic funding addressed allocation optimality. Neither addressed the operational sequence that makes a grants program learn over time. The result is a sector that has disbursed over a billion dollars under an architecture that was never designed to track what those disbursements produced, reproducing at scale the single failure mode that every institutional grantmaker developed its back-end accountability infrastructure to prevent.
+
+CROSS is an architecture for putting the order back. It does not add bureaucracy to a system that was working. It restores the sequence that was missing from the founding template and that every other serious grants institution uses as its operational foundation.
+
+---
+
 ## What CROSS specifies
 
 ![Three obligation modes: Build, Change, and Retroactive, each shown as a distinct accountability structure with its gate test.](assets/cross-obligation-modes.png)
