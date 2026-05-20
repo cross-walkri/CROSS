@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CROSS+WALKRI Standards Assistant</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0a0d1a;
+      --bg-card:      #12172a;
+      --bg-elevated:  #1a2035;
+      --cyan:         #22d3ee;
+      --cyan-dark:    #0891b2;
+      --gold:         #f59e0b;
+      --violet:       #8b5cf6;
+      --green:        #10b981;
+      --text:         #e2e8f0;
+      --muted:        #6b7a99;
+      --border:       #1e2a45;
+      --border-light: #2a3a5c;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+    header { margin-bottom: 2.5rem; }
+    header h1 { font-size: 1.5rem; font-weight: 700; color: var(--cyan); letter-spacing: -0.02em; }
+    header p { margin-top: 0.5rem; color: var(--muted); font-size: 0.95rem; }
+    header a { color: var(--cyan); text-decoration: none; }
+    header a:hover { text-decoration: underline; }
+
+    .key-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .key-section label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .key-row { display: flex; gap: 0.75rem; align-items: center; }
+    .key-input {
+      flex: 1;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-light);
+      border-radius: 7px;
+      padding: 0.55rem 0.9rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: monospace;
+      outline: none;
+    }
+    .key-input:focus { border-color: var(--cyan-dark); }
+    .key-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; }
+    .key-note a { color: var(--cyan); text-decoration: none; }
+
+    .mode-row { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .mode-btn {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-light);
+      background: var(--bg-card);
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: center;
+    }
+    .mode-btn:hover { border-color: var(--cyan-dark); color: var(--text); }
+    .mode-btn.active { border-color: var(--cyan); color: var(--cyan); background: rgba(34,211,238,0.07); }
+
+    .input-section { margin-bottom: 1.25rem; }
+    .input-section label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    textarea {
+      width: 100%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      outline: none;
+      min-height: 120px;
+    }
+    textarea:focus { border-color: var(--cyan-dark); }
+    textarea::placeholder { color: var(--muted); }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.8rem;
+      background: var(--cyan-dark);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .submit-btn:hover:not(:disabled) { background: var(--cyan); color: #0a0d1a; }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .result-section {
+      margin-top: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .result-header {
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .result-body {
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .result-body .verdict-instrument { color: var(--green); font-weight: 700; }
+    .result-body .verdict-label { color: #ef4444; font-weight: 700; }
+
+    .upgrade-box {
+      margin-top: 1.25rem;
+      background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(34,211,238,0.08));
+      border: 1px solid rgba(139,92,246,0.3);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .upgrade-box p { font-size: 0.875rem; color: var(--text); }
+    .upgrade-box p span { color: var(--muted); }
+    .upgrade-link {
+      display: inline-block;
+      padding: 0.55rem 1.1rem;
+      background: var(--violet);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 7px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .upgrade-link:hover { background: #7c3aed; }
+
+    .error-msg { color: #f87171; font-size: 0.875rem; margin-top: 0.75rem; }
+
+    .loading { color: var(--muted); font-size: 0.875rem; margin-top: 0.75rem; }
+    .dot { animation: blink 1.2s infinite; display: inline-block; }
+    .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>CROSS+WALKRI Standards Assistant</h1>
+      <p>Free single-interaction tool. Bring your own <a href="https://console.anthropic.com" target="_blank">Anthropic API key</a>. Your key stays in your browser and is never stored. <a href="index.html">Back to documentation</a></p>
+    </header>
+
+    <div class="key-section">
+      <label>Anthropic API Key</label>
+      <div class="key-row">
+        <input type="password" class="key-input" id="apiKey" placeholder="sk-ant-..." autocomplete="off">
+        <button class="submit-btn" style="width:auto;padding:0.55rem 1rem;font-size:0.85rem;" onclick="saveKey()">Save</button>
+      </div>
+      <p class="key-note">Need a key? Get one at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>. Your key is stored only in this browser tab and sent directly to Anthropic via a secure proxy. We never log or store it.</p>
+    </div>
+
+    <div class="mode-row">
+      <button class="mode-btn active" id="modeAudit" onclick="setMode('audit')">
+        Audit a form field
+      </button>
+      <button class="mode-btn" id="modeObligation" onclick="setMode('obligation')">
+        Design obligation structure
+      </button>
+    </div>
+
+    <div class="input-section">
+      <label id="inputLabel">Form field to audit</label>
+      <textarea id="userInput" placeholder="Paste your field label and any helper text or caption. Include the field type if known.&#10;&#10;Example: Label: &quot;What is your project's impact?&quot; | Type: Long answer | Caption: none"></textarea>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="submit()">Run audit</button>
+    <div id="statusMsg"></div>
+
+    <div id="resultSection" style="display:none;">
+      <div class="result-section">
+        <div class="result-header">Result</div>
+        <div class="result-body" id="resultBody"></div>
+      </div>
+      <div class="upgrade-box">
+        <p>This is a single interaction. <span>The full Form Builder designs entire forms across all six grant program cohorts, generates runbooks, and exports to Fillout, Typeform, SurveyJS, and more.</span></p>
+        <a class="upgrade-link" href="https://crosswalkri-builder.vercel.app" target="_blank">Try the full Form Builder</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_ENDPOINT = 'https://crosswalkri-builder.vercel.app/api/chat/free'
+    let currentMode = 'audit'
+
+    const placeholders = {
+      audit: 'Paste your field label and any helper text or caption. Include the field type if known.\n\nExample: Label: "What is your project\'s impact?" | Type: Long answer | Caption: none',
+      obligation: 'Describe your grants program. Include: the program type (e.g. Web3 public goods, international development), whether you have returning projects or only new applicants, any domain focus, and what you know about how you plan to disburse funds.\n\nExample: We run a quarterly Web3 public goods round. We have returning projects from prior epochs and new applicants. We fund software tooling and research. We currently do lump-sum disbursement.'
+    }
+
+    const labels = {
+      audit: 'Form field to audit',
+      obligation: 'Describe your grants program'
+    }
+
+    const buttons = {
+      audit: 'Run field audit',
+      obligation: 'Generate O stage structure'
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem('crosswalkri_api_key')
+      if (saved) document.getElementById('apiKey').value = saved
+    }
+
+    function saveKey() {
+      const key = document.getElementById('apiKey').value.trim()
+      if (key) localStorage.setItem('crosswalkri_api_key', key)
+    }
+
+    function setMode(mode) {
+      currentMode = mode
+      document.getElementById('modeAudit').classList.toggle('active', mode === 'audit')
+      document.getElementById('modeObligation').classList.toggle('active', mode === 'obligation')
+      document.getElementById('inputLabel').textContent = labels[mode]
+      document.getElementById('userInput').placeholder = placeholders[mode]
+      document.getElementById('submitBtn').textContent = buttons[mode]
+      document.getElementById('resultSection').style.display = 'none'
+      document.getElementById('statusMsg').innerHTML = ''
+    }
+
+    async function submit() {
+      const apiKey = document.getElementById('apiKey').value.trim()
+      const message = document.getElementById('userInput').value.trim()
+      const status = document.getElementById('statusMsg')
+
+      if (!apiKey) { status.innerHTML = '<p class="error-msg">Enter your Anthropic API key above first.</p>'; return }
+      if (!message) { status.innerHTML = '<p class="error-msg">Enter something to ' + (currentMode === 'audit' ? 'audit' : 'describe') + '.</p>'; return }
+
+      localStorage.setItem('crosswalkri_api_key', apiKey)
+
+      const btn = document.getElementById('submitBtn')
+      btn.disabled = true
+      status.innerHTML = '<p class="loading">Working<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>'
+      document.getElementById('resultSection').style.display = 'none'
+
+      const modePrefix = currentMode === 'obligation'
+        ? 'Design the O stage obligation structure for this grants program: '
+        : 'Audit this form field: '
+
+      try {
+        const res = await fetch(API_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: modePrefix + message, userApiKey: apiKey })
+        })
+
+        const data = await res.json()
+
+        if (data.error) {
+          status.innerHTML = '<p class="error-msg">Error: ' + escapeHtml(data.error) + '</p>'
+        } else {
+          status.innerHTML = ''
+          renderResult(data.text)
+        }
+      } catch (err) {
+        status.innerHTML = '<p class="error-msg">Network error. Check your connection and try again.</p>'
+      } finally {
+        btn.disabled = false
+      }
+    }
+
+    function renderResult(text) {
+      const section = document.getElementById('resultSection')
+      const body = document.getElementById('resultBody')
+
+      // Split off the upgrade CTA line the AI appends (starts with ---)
+      const parts = text.split(/\n---\n/)
+      const mainText = parts[0].trim()
+
+      // Highlight INSTRUMENT / LABEL verdicts
+      const highlighted = escapeHtml(mainText)
+        .replace(/\bINSTRUMENT\b/g, '<span class="verdict-instrument">INSTRUMENT</span>')
+        .replace(/\bLABEL\b/g, '<span class="verdict-label">LABEL</span>')
+
+      body.innerHTML = highlighted
+      section.style.display = 'block'
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    }
+  </script>
+</body>
+</html>
