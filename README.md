@@ -148,6 +148,44 @@ The `statements/` directory contains 126+ individually published compatibility s
 
 ---
 
+## AI tools
+
+The CROSS+WALKRI tools repository publishes an MCP server that exposes CROSS and WALKRI as callable tools in Claude Code, Cursor, and any MCP-compatible AI assistant. Install once; the tools are then available in any conversation without copy-pasting prompts or standard text.
+
+**Install:**
+
+```bash
+git clone https://github.com/CrossWalkri/tools ~/cross-walkri
+```
+
+Then add to your MCP client configuration (Claude Code: `~/.claude/settings.json`; Cursor: `.cursor/mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "cross-walkri": {
+      "command": "node",
+      "args": ["/Users/yourname/cross-walkri/server.mjs"]
+    }
+  }
+}
+```
+
+Replace the path with wherever you cloned the repository. No build step required.
+
+**CROSS tools available after install:**
+
+- `cross_check_gate` - returns the full requirements list for a gate of a given type and obligation mode; optionally checks provided content for gaps
+- `cross_configure_round` - infers an obligation mode for a described program, recommends a gate structure, and returns a prompt template for generating the full configuration
+- `cross_classify_framework` - classifies an external framework against CROSS+WALKRI primitives across seven layers; returns which are present, which are absent, and a prompt for a formal compatibility statement
+- `cross_audit_round` - evaluates whether a described grant round was run correctly under CROSS+WALKRI; returns a conformance verdict and prioritized gap list
+
+The WALKRI tools (`walkri_audit_field`, `walkri_generate_field`) are also included. See the WALKRI README for details.
+
+Source and full documentation: github.com/CrossWalkri/tools
+
+---
+
 ## Ecosystem position
 
 Every major tool in the grants stack was examined before CROSS was designed. The table below shows where each sits and what it covers. The pattern is consistent: existing tools manage, format, or document data produced by a grants process. None specify the obligation architecture or field quality that determines whether the data is trustworthy before the process begins.
