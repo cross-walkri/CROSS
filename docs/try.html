@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CROSS+WALKRI Standards Assistant</title>
+  <title>CROSS+WALKRI Standards Tools</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -32,20 +32,43 @@
 
     .container { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem; }
 
-    header { margin-bottom: 2.5rem; }
+    header { margin-bottom: 2rem; }
     header h1 { font-size: 1.5rem; font-weight: 700; color: var(--cyan); letter-spacing: -0.02em; }
     header p { margin-top: 0.5rem; color: var(--muted); font-size: 0.95rem; }
     header a { color: var(--cyan); text-decoration: none; }
     header a:hover { text-decoration: underline; }
+
+    .section-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
 
     .key-section {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.25rem 1.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
-    .key-section label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .provider-row { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .provider-btn {
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-light);
+      background: var(--bg-elevated);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .provider-btn:hover { border-color: var(--cyan-dark); color: var(--text); }
+    .provider-btn.active { border-color: var(--cyan); color: var(--cyan); background: rgba(34,211,238,0.07); }
+
     .key-row { display: flex; gap: 0.75rem; align-items: center; }
     .key-input {
       flex: 1;
@@ -59,28 +82,53 @@
       outline: none;
     }
     .key-input:focus { border-color: var(--cyan-dark); }
-    .key-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; }
+    .key-note { font-size: 0.78rem; color: var(--muted); margin-top: 0.6rem; }
     .key-note a { color: var(--cyan); text-decoration: none; }
 
-    .mode-row { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .save-btn {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-light);
+      border-radius: 7px;
+      padding: 0.55rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .save-btn:hover { color: var(--text); border-color: var(--cyan-dark); }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
     .mode-btn {
-      flex: 1;
-      padding: 0.7rem 1rem;
+      padding: 0.75rem 1rem;
       border-radius: 8px;
       border: 1px solid var(--border-light);
       background: var(--bg-card);
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.15s;
-      text-align: center;
+      text-align: left;
     }
     .mode-btn:hover { border-color: var(--cyan-dark); color: var(--text); }
     .mode-btn.active { border-color: var(--cyan); color: var(--cyan); background: rgba(34,211,238,0.07); }
+    .mode-btn .mode-tag {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+    .mode-btn.active .mode-tag { color: var(--cyan-dark); }
 
-    .input-section { margin-bottom: 1.25rem; }
-    .input-section label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .input-section { margin-bottom: 1rem; }
     textarea {
       width: 100%;
       background: var(--bg-elevated);
@@ -92,91 +140,110 @@
       font-family: inherit;
       resize: vertical;
       outline: none;
-      min-height: 120px;
+      min-height: 130px;
     }
     textarea:focus { border-color: var(--cyan-dark); }
     textarea::placeholder { color: var(--muted); }
 
     .submit-btn {
       width: 100%;
-      padding: 0.8rem;
       background: var(--cyan-dark);
       color: #fff;
-      font-size: 0.95rem;
-      font-weight: 600;
       border: none;
       border-radius: 8px;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 600;
       cursor: pointer;
       transition: background 0.15s;
     }
-    .submit-btn:hover:not(:disabled) { background: var(--cyan); color: #0a0d1a; }
-    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    .result-section {
-      margin-top: 2rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .result-header {
-      padding: 0.75rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .result-body {
-      padding: 1.25rem 1.5rem;
-      font-size: 0.9rem;
-      line-height: 1.7;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-    .result-body .verdict-instrument { color: var(--green); font-weight: 700; }
-    .result-body .verdict-label { color: #ef4444; font-weight: 700; }
-
+    .submit-btn:hover { background: var(--cyan); color: var(--bg); }
+    .submit-btn:disabled { background: var(--bg-elevated); color: var(--muted); cursor: not-allowed; }
 
     .error-msg { color: #f87171; font-size: 0.875rem; margin-top: 0.75rem; }
-
     .loading { color: var(--muted); font-size: 0.875rem; margin-top: 0.75rem; }
     .dot { animation: blink 1.2s infinite; display: inline-block; }
     .dot:nth-child(2) { animation-delay: 0.2s; }
     .dot:nth-child(3) { animation-delay: 0.4s; }
     @keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } }
 
-    hr { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+    .result-section {
+      margin-top: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .result-header {
+      padding: 0.6rem 1.25rem;
+      background: var(--bg-elevated);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .result-body {
+      padding: 1.25rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      color: var(--text);
+    }
+    .verdict-instrument { color: var(--green); font-weight: 700; }
+    .verdict-label { color: #f87171; font-weight: 700; }
+    .verdict-compliant { color: var(--green); font-weight: 700; }
+    .verdict-underspecified { color: var(--gold); font-weight: 700; }
+    .verdict-label-only { color: #f87171; font-weight: 700; }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>CROSS+WALKRI Standards Assistant</h1>
-      <p>Free single-interaction tool. Bring your own <a href="https://console.anthropic.com" target="_blank">Anthropic API key</a>. Your key stays in your browser and is never stored. <a href="index.html">Back to documentation</a></p>
+      <h1>CROSS+WALKRI Standards Tools</h1>
+      <p>Free single-interaction tools. Bring your own API key for any supported provider. Your key stays in your browser and is never stored on our servers. <a href="index.html">Back to documentation</a></p>
     </header>
 
     <div class="key-section">
-      <label>Anthropic API Key</label>
+      <div class="section-label">AI Provider</div>
+      <div class="provider-row">
+        <button class="provider-btn active" id="providerAnthropic" onclick="setProvider('anthropic')">Anthropic (Claude)</button>
+        <button class="provider-btn" id="providerOpenai" onclick="setProvider('openai')">OpenAI (GPT)</button>
+      </div>
+      <div class="section-label" id="keyLabel">API Key (Anthropic)</div>
       <div class="key-row">
         <input type="password" class="key-input" id="apiKey" placeholder="sk-ant-..." autocomplete="off">
-        <button class="submit-btn" style="width:auto;padding:0.55rem 1rem;font-size:0.85rem;" onclick="saveKey()">Save</button>
+        <button class="save-btn" onclick="saveKey()">Save</button>
       </div>
-      <p class="key-note">Need a key? Get one at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>. Your key is stored only in this browser tab and sent directly to Anthropic via a secure proxy. We never log or store it.</p>
+      <p class="key-note" id="keyNote">
+        Get an Anthropic key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>.
+        Your key is stored only in this browser tab and sent to Anthropic via a secure proxy. We never log or store it.
+      </p>
     </div>
 
-    <div class="mode-row">
+    <div class="section-label" style="margin-bottom:0.5rem;">Select a tool</div>
+    <div class="mode-grid">
       <button class="mode-btn active" id="modeAudit" onclick="setMode('audit')">
+        <span class="mode-tag">WALKRI</span>
         Audit a form field
       </button>
-      <button class="mode-btn" id="modeObligation" onclick="setMode('obligation')">
-        Design obligation structure
+      <button class="mode-btn" id="modeRound" onclick="setMode('round')">
+        <span class="mode-tag">CROSS / Operator</span>
+        Design a round
+      </button>
+      <button class="mode-btn" id="modeConform" onclick="setMode('conform')">
+        <span class="mode-tag">CROSS / Grantee</span>
+        Conform to a round
+      </button>
+      <button class="mode-btn" id="modeToc" onclick="setMode('toc')">
+        <span class="mode-tag">Theory of Change</span>
+        Build a ToC
       </button>
     </div>
 
     <div class="input-section">
-      <label id="inputLabel">Form field to audit</label>
-      <textarea id="userInput" placeholder="Paste your field label and any helper text or caption. Include the field type if known.&#10;&#10;Example: Label: &quot;What is your project's impact?&quot; | Type: Long answer | Caption: none"></textarea>
+      <div class="section-label" id="inputLabel">Form field to audit</div>
+      <textarea id="userInput" placeholder=""></textarea>
     </div>
 
     <button class="submit-btn" id="submitBtn" onclick="submit()">Run audit</button>
@@ -192,71 +259,124 @@
 
   <script>
     const API_ENDPOINT = 'https://crosswalkri-builder.vercel.app/api/chat/free'
+
     let currentMode = 'audit'
+    let currentProvider = 'anthropic'
 
-    const placeholders = {
-      audit: 'Paste your field label and any helper text or caption. Include the field type if known.\n\nExample: Label: "What is your project\'s impact?" | Type: Long answer | Caption: none',
-      obligation: 'Describe your grants program. Include: the program type (e.g. Web3 public goods, international development), whether you have returning projects or only new applicants, any domain focus, and what you know about how you plan to disburse funds.\n\nExample: We run a quarterly Web3 public goods round. We have returning projects from prior epochs and new applicants. We fund software tooling and research. We currently do lump-sum disbursement.'
+    const modes = {
+      audit: {
+        label: 'Form field to audit',
+        button: 'Run field audit',
+        prefix: 'FIELD AUDIT: ',
+        placeholder: 'Paste your field label and any helper text or caption. Include the field type if known.\n\nExample: Label: "What is your project\'s impact?" | Type: Long answer | Caption: none',
+      },
+      round: {
+        label: 'Describe your grants program',
+        button: 'Generate Commit stage',
+        prefix: 'ROUND DESIGNER: ',
+        placeholder: 'Describe your grants program. Include: the program type (e.g. Web3 public goods, research funding), whether you have returning projects or only new applicants, any domain focus, and how you plan to disburse funds.\n\nExample: We run a quarterly Web3 public goods round. We have returning projects from prior epochs and new applicants. We fund software tooling and research. Lump-sum disbursement.',
+      },
+      conform: {
+        label: 'Paste the round requirements, then describe your work',
+        button: 'Get conformance guidance',
+        prefix: 'ROUND CONFORM: ',
+        placeholder: 'Paste or describe the round\'s published obligation requirements, then describe your organization and what you are applying to fund.\n\nExample: "Round requires: Change obligation mode, published indicator, FROM/TO state. My org: we build open-source developer tooling for Ethereum. We are applying to fund..."',
+      },
+      toc: {
+        label: 'Describe your organization and the work you are funding',
+        button: 'Build Theory of Change',
+        prefix: 'TOC BUILDER: ',
+        placeholder: 'Describe your organization and what work you are applying to fund. Include any prior grants and what you delivered, the condition you are trying to change or the artifact you are trying to build, and the population or context your work serves.',
+      },
     }
 
-    const labels = {
-      audit: 'Form field to audit',
-      obligation: 'Describe your grants program'
-    }
-
-    const buttons = {
-      audit: 'Run field audit',
-      obligation: 'Generate O stage structure'
+    const providerConfig = {
+      anthropic: {
+        label: 'API Key (Anthropic)',
+        placeholder: 'sk-ant-...',
+        noteHtml: 'Get an Anthropic key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>. Your key is stored only in this browser tab and sent to Anthropic via a secure proxy. We never log or store it.',
+        storageKey: 'crosswalkri_api_key_anthropic',
+      },
+      openai: {
+        label: 'API Key (OpenAI)',
+        placeholder: 'sk-...',
+        noteHtml: 'Get an OpenAI key at <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a>. Your key is stored only in this browser tab and sent to OpenAI via a secure proxy. We never log or store it.',
+        storageKey: 'crosswalkri_api_key_openai',
+      },
     }
 
     window.onload = () => {
-      const saved = localStorage.getItem('crosswalkri_api_key')
-      if (saved) document.getElementById('apiKey').value = saved
+      loadKey()
+      updateModeUI()
     }
 
-    function saveKey() {
-      const key = document.getElementById('apiKey').value.trim()
-      if (key) localStorage.setItem('crosswalkri_api_key', key)
-    }
-
-    function setMode(mode) {
-      currentMode = mode
-      document.getElementById('modeAudit').classList.toggle('active', mode === 'audit')
-      document.getElementById('modeObligation').classList.toggle('active', mode === 'obligation')
-      document.getElementById('inputLabel').textContent = labels[mode]
-      document.getElementById('userInput').placeholder = placeholders[mode]
-      document.getElementById('submitBtn').textContent = buttons[mode]
+    function setProvider(p) {
+      currentProvider = p
+      document.getElementById('providerAnthropic').classList.toggle('active', p === 'anthropic')
+      document.getElementById('providerOpenai').classList.toggle('active', p === 'openai')
+      const cfg = providerConfig[p]
+      document.getElementById('keyLabel').textContent = cfg.label
+      document.getElementById('apiKey').placeholder = cfg.placeholder
+      document.getElementById('keyNote').innerHTML = cfg.noteHtml
+      loadKey()
       document.getElementById('resultSection').style.display = 'none'
       document.getElementById('statusMsg').innerHTML = ''
     }
 
+    function loadKey() {
+      const saved = localStorage.getItem(providerConfig[currentProvider].storageKey)
+      document.getElementById('apiKey').value = saved || ''
+    }
+
+    function saveKey() {
+      const key = document.getElementById('apiKey').value.trim()
+      if (key) localStorage.setItem(providerConfig[currentProvider].storageKey, key)
+    }
+
+    function setMode(mode) {
+      currentMode = mode
+      var ids = { audit: 'modeAudit', round: 'modeRound', conform: 'modeConform', toc: 'modeToc' }
+      Object.keys(ids).forEach(function(m) {
+        document.getElementById(ids[m]).classList.toggle('active', m === mode)
+      })
+      updateModeUI()
+      document.getElementById('resultSection').style.display = 'none'
+      document.getElementById('statusMsg').innerHTML = ''
+    }
+
+    function updateModeUI() {
+      var m = modes[currentMode]
+      document.getElementById('inputLabel').textContent = m.label
+      document.getElementById('userInput').placeholder = m.placeholder
+      document.getElementById('submitBtn').textContent = m.button
+      document.getElementById('userInput').value = ''
+    }
+
     async function submit() {
-      const apiKey = document.getElementById('apiKey').value.trim()
-      const message = document.getElementById('userInput').value.trim()
-      const status = document.getElementById('statusMsg')
+      var apiKey = document.getElementById('apiKey').value.trim()
+      var userText = document.getElementById('userInput').value.trim()
+      var status = document.getElementById('statusMsg')
 
-      if (!apiKey) { status.innerHTML = '<p class="error-msg">Enter your Anthropic API key above first.</p>'; return }
-      if (!message) { status.innerHTML = '<p class="error-msg">Enter something to ' + (currentMode === 'audit' ? 'audit' : 'describe') + '.</p>'; return }
+      if (!apiKey) { status.innerHTML = '<p class="error-msg">Enter your API key above first.</p>'; return }
+      if (!userText) { status.innerHTML = '<p class="error-msg">Enter something in the text area.</p>'; return }
 
-      localStorage.setItem('crosswalkri_api_key', apiKey)
+      saveKey()
 
-      const btn = document.getElementById('submitBtn')
+      var btn = document.getElementById('submitBtn')
       btn.disabled = true
       status.innerHTML = '<p class="loading">Working<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>'
       document.getElementById('resultSection').style.display = 'none'
 
-      const modePrefix = currentMode === 'obligation'
-        ? 'Design the O stage obligation structure for this grants program: '
-        : 'Audit this form field: '
+      var message = modes[currentMode].prefix + userText
 
       try {
-        const res = await fetch(API_ENDPOINT, {
+        var res = await fetch(API_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: modePrefix + message, userApiKey: apiKey })
+          body: JSON.stringify({ message: message, userApiKey: apiKey, provider: currentProvider }),
         })
 
-        const data = await res.json()
+        var data = await res.json()
 
         if (data.error) {
           status.innerHTML = '<p class="error-msg">Error: ' + escapeHtml(data.error) + '</p>'
@@ -264,7 +384,7 @@
           status.innerHTML = ''
           renderResult(data.text)
         }
-      } catch (err) {
+      } catch(e) {
         status.innerHTML = '<p class="error-msg">Network error. Check your connection and try again.</p>'
       } finally {
         btn.disabled = false
@@ -272,17 +392,19 @@
     }
 
     function renderResult(text) {
-      const section = document.getElementById('resultSection')
-      const body = document.getElementById('resultBody')
+      var section = document.getElementById('resultSection')
+      var body = document.getElementById('resultBody')
 
-      // Split off the upgrade CTA line the AI appends (starts with ---)
-      const parts = text.split(/\n---\n/)
-      const mainText = parts[0].trim()
+      var parts = text.split('\n---\n')
+      var mainText = parts[0].trim()
 
-      // Highlight INSTRUMENT / LABEL verdicts
-      const highlighted = escapeHtml(mainText)
+      var highlighted = escapeHtml(mainText)
         .replace(/\bINSTRUMENT\b/g, '<span class="verdict-instrument">INSTRUMENT</span>')
-        .replace(/\bLABEL\b/g, '<span class="verdict-label">LABEL</span>')
+        .replace(/\bLABEL\b(?!-only)/g, '<span class="verdict-label">LABEL</span>')
+        .replace(/\bCompliant\b/g, '<span class="verdict-compliant">Compliant</span>')
+        .replace(/\bUnderspecified\b/g, '<span class="verdict-underspecified">Underspecified</span>')
+        .replace(/\bLabel-only\b/g, '<span class="verdict-label-only">Label-only</span>')
+        .replace(/\bINCOMPLETE\b/g, '<span class="verdict-underspecified">INCOMPLETE</span>')
 
       body.innerHTML = highlighted
       section.style.display = 'block'
