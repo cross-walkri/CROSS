@@ -3,7 +3,7 @@ title: German Bilateral Development Cooperation (BMZ/GIZ) Compatibility - CROSS+
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.2 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.2 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - https://www.bmz.de/resource/blob/240112/evaluierungskriterien-en.pdf
   - https://www.giz.de/en/downloads/giz-2023-en-gizs-evaluation-system-basic-aspects.pdf
@@ -75,15 +75,15 @@ These five requirements are the instrument-design implementation of what DeGEval
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
 
 ---
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 BMZ Evaluation Criteria: https://www.bmz.de/resource/blob/240112/evaluierungskriterien-en.pdf
 
