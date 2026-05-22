@@ -3,7 +3,7 @@ title: IFC Operating Principles for Impact Management Compatibility - CROSS+WALK
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.0 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.0 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - IFC Operating Principles for Impact Management (impactprinciples.org/9-principles)
   - IFC Impact Investing Principles, 2019
@@ -141,4 +141,4 @@ Co-financing programs between OPIM signatories and other funders. When a CROSS+W
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
