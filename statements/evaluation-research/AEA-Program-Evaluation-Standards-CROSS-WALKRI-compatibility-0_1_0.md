@@ -3,7 +3,7 @@ title: AEA/JCSEE Program Evaluation Standards (2011) Compatibility - CROSS+WALKR
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.2 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.2 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - AEA Program Evaluation Standards, https://www.eval.org/About/Competencies-Standards/Program-Evaluation-Standards
   - Program Evaluation Standards, Third Edition (JCSEE, 2011), ISBN 9781412989084, https://archive.org/details/isbn_9781412989084
@@ -65,9 +65,9 @@ The JCSEE framework treats Accuracy as a property of the overall evaluation proc
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 AEA Program Evaluation Standards: https://www.eval.org/About/Competencies-Standards/Program-Evaluation-Standards
 
