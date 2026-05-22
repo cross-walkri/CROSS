@@ -3,7 +3,7 @@ title: IMLS Outcome-Based Evaluation Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.5 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.5 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - Institute of Museum and Library Services, Outcome-Based Evaluation (imls.gov/grants/outcome-based-evaluation/basics)
   - Government Performance and Results Act, Pub. L. 103-62 (1993)
@@ -63,4 +63,4 @@ WALKRI's operational definition requirement, applied before any intake field is 
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
