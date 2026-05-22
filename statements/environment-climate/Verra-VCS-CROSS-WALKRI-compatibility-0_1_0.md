@@ -3,7 +3,7 @@ title: Verra Verified Carbon Standard (VCS) Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.4 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.4 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - https://verra.org/wp-content/uploads/2022/02/VCS-Standard_v4.2.pdf
   - https://verra.org/programs/verified-carbon-standard/vcs-program-details/
@@ -66,4 +66,4 @@ This prevents the common failure mode in which projects pass VVB validation with
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
