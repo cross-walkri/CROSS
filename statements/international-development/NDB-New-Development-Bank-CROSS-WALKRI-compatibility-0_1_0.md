@@ -3,7 +3,7 @@ title: New Development Bank (NDB) Evaluation Policy and Manual (2024) Compatibil
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.4 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.4 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - https://www.ndb.int/wp-content/uploads/2024/04/NDB_IEO_Evaluation-Policy-.pdf
   - https://www.ndb.int/wp-content/uploads/2024/11/1_Nidhi-Chaudhary_-Evaluation-Manual.pdf
@@ -62,4 +62,4 @@ NDB's freshly published 2024 documentation suite represents the most current ite
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
