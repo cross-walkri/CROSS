@@ -3,7 +3,7 @@ title: India Corporate Social Responsibility Mandate (Companies Act 2013, Sectio
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.2 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.2 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - MCA FAQ on CSR (mca.gov.in/Ministry/pdf/FAQ_CSR.pdf)
   - Companies (CSR Policy) Amendment Rules 2021, gazetted January 22, 2021
@@ -76,4 +76,4 @@ For companies operating CSR programs through implementing agencies (a common str
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
