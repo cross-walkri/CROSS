@@ -3,7 +3,7 @@ title: National Lottery Community Fund and Lottery-Funded Grantmaking Compatibil
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.2 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.2 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - https://www.tnlcommunityfund.org.uk/media/insights/documents/Understanding-Thriving-Communities.pdf
   - https://communityimpacthub.wa.gov.au/media/wbjgexnl/grn214_grant-impact-guides_v7_single-pages.pdf
@@ -74,4 +74,4 @@ WALKRI also addresses a specific risk in lottery-funded programs with flexible e
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
