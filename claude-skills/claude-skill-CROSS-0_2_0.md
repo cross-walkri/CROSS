@@ -1,11 +1,12 @@
 ---
 title: CROSS Skill
-version: 0.5.0
-date: 2026-05-19
+version: 0.6.0
+date: 2026-05-22
 status: Procedural encoding of CROSS v0.4.7 for AI-assisted grant evaluation and configuration.
 related_documents:
   - standards/CROSS-common-reporting-outcome-standards-schema-0_2_0.md
   - standards/CROSS-grant-configurator-0_2_0.md
+  - standards/CROSS-canonical-round-configuration-schema-0_1_0.md
   - standards/CROSS-grantee-dashboard-0_2_0.md
   - standards/CROSS-reviewers-dashboard-0_1_0.md
   - standards/CROSS-runbooks-0_1_0.md
@@ -64,6 +65,8 @@ When given an evaluation task, identify which operation is requested and run the
 22. **Portfolio benchmark compliance assessment.** Run when a program operates Runbook 12 or when a funder has published portfolio-level performance thresholds. Assesses funder-side accountability against the published benchmark rather than only individual grantee gate outcomes. See Part XVI and CROSS-runbooks-0_2_0.md.
 
 23. **Beneficiary accountability mechanism assessment.** Run when a program operates Runbook 13 or when program MEAL requirements include community feedback and complaint response. Confirms that the mechanism is specified before any beneficiary is enrolled. The mechanism must name what it can receive, how it operates, who is responsible, the response timeline, and what records are maintained. A mechanism that names a channel without these specifications is a label, not a mechanism.
+
+25. **Compound obligation entry gate assessment.** Run when the declared obligation mode is compound: a program-level Change claim with multiple Build components as the causal pathway. Confirm that a complete change specification is present at the program level and that each component carries a contribution_to_change statement. See Part III, Section D below.
 
 24. **Primitive classification for new frameworks.** Run when asked how a new external framework aligns with CROSS+WALKRI. Identify which measurement primitive the framework exemplifies using the CROSS-WALKRI-primitives-framework-index-0_1_0.md. Report whether a full compatibility statement is warranted (structurally novel exemplar) or a Tier 2 index entry suffices (existing primitive with existing exemplars). The ten primary primitives are: pre-specification/entry gate, obligation mode (Build/Change/Retroactive), Theory of Change hierarchy, causality stance, disaggregation ratchet, independent verification pathway, portfolio aggregation, organizational identity anchor, evidence form specification (WALKRI), and coherence disclosure. Candidate new primitives from v0.4.7 research: inter-cycle reflection stage, multi-cycle retrospective assessment, portfolio-level continuation benchmark applied to funder, beneficiary accountability mechanism, regulatory approval pathway as terminal gate.
 
@@ -255,6 +258,32 @@ Default if no Grant Configurator has been run: assign Tier 2 and note that a Con
 Gate passes: "Entry specification gate passes: applicant presents contribution evidence of [type] from [period], with independent sources confirming [contribution] and [use]."
 
 Gate fails: "Entry specification gate fails: [describe which element is absent: contribution description, period, independent contribution evidence, independent use evidence, or prior award disclosure]."
+
+---
+
+### Section D: Compound Obligation Entry Gate
+
+**The gate question:** Does the application present (1) a program-level Change specification that would pass the Change obligation entry gate, and (2) component-level Build specifications, each carrying a contribution_to_change statement explaining how that component's deliverable advances the causal chain toward the program-level Change?
+
+**What must be present:** A complete change_specification block at the program level: FROM state with source, TO state in the same units as FROM, named indicator with operational definition, causal mechanism with explicit assumptions, evidence threshold, evaluation timeline. A components array with at least two components. Each component must carry: a named deliverable, completion criteria specific enough for independent verification, and a contribution_to_change statement.
+
+**Pass criteria:** The program-level Change specification passes the Section B gate. Each component passes the Section A gate independently. Each component's contribution_to_change statement makes a specific causal claim, not a general connection to program goals.
+
+**Critical rule:** Completing all Build components does not automatically constitute achieving the program-level Change. The two evaluation tracks are separate. A compound grant that completes all Build components but does not produce the specified Change has met its Build obligations and failed its Change obligation. These are distinct findings and must be reported separately.
+
+**Fail criteria:**
+
+- Program-level Change specification fails the Section B gate: classify the failure using the FROM state classifications above.
+- Any component fails the Section A gate: "Component [name] entry specification gate fails: [failure description]."
+- A component's contribution_to_change statement does not make a specific causal claim: "Component [name] contribution_to_change is generic. The statement connects the deliverable to the program goal but does not state the mechanism by which the deliverable advances the causal chain."
+
+**Gate finding options:**
+
+Gate passes: "Compound entry specification gate passes: program-level Change specification [summary]; [N] components with passing deliverable specifications and contribution_to_change statements."
+
+Gate fails (program level): "Compound entry specification gate fails at program level: [Change obligation failure description]."
+
+Gate fails (component level): "Compound entry specification gate passes at program level. Component [name] fails: [Build obligation failure description]."
 
 ---
 
@@ -744,6 +773,8 @@ Apply the five WALKRI data quality standards in order to any indicator claim or 
 
 Run when a funder wants to generate a round specification. Ask questions in the following order. Compile the output into a round configuration document after all questions are answered.
 
+The Grant Configurator produces the Commit stage output of the CLEAR lifecycle (Commit, List, Evaluate, Attest, Register). The Commit stage output is a machine-readable round specification published before any application opens. It is the authoritative coordination instrument for that round: applicants interact with the round specification, not with the CROSS standard directly. The canonical format for this output is specified in CROSS-canonical-round-configuration-schema-0_1_0.md. Publishing the round specification in this format enables grantees to import it into Theory of Change tools and receive structured guidance toward a conformant application.
+
 Before publishing any round, verify that these pre-publication requirements are met: (1) a plain-language applicant-facing summary of the round's requirements is published before the round opens and remains publicly accessible for the full duration; (2) the full application question list is published before the round opens, publicly accessible without creating an account or contacting the funder, showing every question in order with the response form type and the criterion intent for each question; (3) all gate criteria meet WALKRI criterion specification requirements at Standard certification level or above before the round opens.
 
 **Q0: Program type and runbook selection.**
@@ -764,7 +795,9 @@ Round name, funding organization, opening date, closing date, stage number (if m
 
 **Q2: Accountability mode and program structure.**
 
-Which obligation mode: build / change / retroactive / multi-stage with different modes per stage? For retroactive rounds: is a forward commitment requirement configured?
+Which obligation mode: build / change / retroactive / compound / multi-stage with different modes per stage? For retroactive rounds: is a forward commitment requirement configured?
+
+For compound rounds: the program declares a program-level Change obligation and a set of Build component obligations whose completion forms the causal pathway toward the Change. The canonical round configuration must carry both a complete change_specification block and a components array. Each component must carry a contribution_to_change statement. See Section D of Part III for the compound entry gate procedure.
 
 **Q3: Eligibility domain.**
 
@@ -820,9 +853,9 @@ Does the program anticipate concurrent funding disclosures? If yes, confirm that
 
 For any gate that references an external standard: confirm that the reference includes the identifier, version anchor, scope, and compliance threshold. A reference without a compliance threshold delegates interpretation to reviewers and is a gate criterion specification failure.
 
-**Q16: Round specification pre-commitment.**
+**Q16: Round specification pre-commitment and canonical format.**
 
-Will the program publish a verifiable commitment to the round specification before the application window opens? Explain the benefit: a pre-commitment record is the evidentiary basis for applicant redress rights in procedural appeals alleging criteria changed after submission.
+Will the program publish a verifiable commitment to the round specification before the application window opens? The canonical format for this commitment is specified in CROSS-canonical-round-configuration-schema-0_1_0.md. Publishing in this format enables grantees to import the specification into Theory of Change tools and receive structured guidance toward a conformant application. A pre-commitment record is also the evidentiary basis for applicant redress rights in procedural appeals alleging criteria changed after submission.
 
 ---
 
@@ -1257,7 +1290,7 @@ Before generating any finding or recommendation:
 
 1. Confirm that both the organizational identity declaration and the sufficiency architecture declaration are present for any entry gate assessment. If either is absent, the submission is incomplete; do not proceed to gate assessment.
 
-2. Confirm the obligation mode from the round specification. Apply the correct gate procedure from Part III.
+2. Confirm the obligation mode from the round specification: build, change, retroactive, or compound. Apply the correct gate procedure from Part III (Section A for build, Section B for change, Section C for retroactive, Section D for compound).
 
 3. Confirm which task is requested and apply the correct procedure in full. Do not abbreviate the procedure because the application appears simple.
 
@@ -1269,7 +1302,7 @@ Before generating any finding or recommendation:
 
 7. Do not substitute the gate assessment for the rigor tier assessment, or the rigor tier assessment for the gate. They are sequential, not interchangeable.
 
-8. Do not apply change-obligation gate criteria to build-obligation applications. The Theory of Build is not a failure mode in build-obligation rounds.
+8. Do not apply change-obligation gate criteria to build-obligation applications, and do not apply build-obligation criteria to compound applications. The Theory of Build is not a failure mode in build-obligation rounds. For compound rounds, the program-level Change assessment and the component-level Build assessments are separate procedures; do not merge them.
 
 9. Apply the causality stance declared in the gate configuration. Do not default to attribution stance when contribution stance is appropriate to the program context.
 
@@ -1281,6 +1314,7 @@ Before generating any finding or recommendation:
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 0.6.0 | 2026-05-22 | Added compound obligation mode throughout. Part III: added Section D (Compound Obligation Entry Gate) covering program-level Change specification assessment, component-level Build specification assessment, contribution_to_change statement evaluation, and separate evaluation track rule. Runtime Sequence: added operation 25 (compound obligation entry gate assessment). Part X: added CLEAR lifecycle definition (Commit, List, Evaluate, Attest, Register) and canonical round configuration schema reference to Grant Configurator preamble; updated Q2 to include compound mode with component array requirement; updated Q16 to reference CROSS-canonical-round-configuration-schema-0_1_0.md as the canonical format for Commit stage output. Standing Obligations: updated obligation 2 to include compound mode; updated obligation 8 to include compound-specific non-merger rule. Frontmatter: added CROSS-canonical-round-configuration-schema-0_1_0.md to related_documents. |
 | 0.5.0 | 2026-05-19 | Major update to encode CROSS v0.4.7. Runtime Sequence: added operations 21-24 covering novel runbook selection (Runbooks 7-13 from CROSS-runbooks-0_2_0.md), portfolio benchmark compliance assessment, beneficiary accountability mechanism assessment, and primitive classification for new frameworks. Part X Q0: expanded to include all thirteen runbooks across both runbook documents, plus program type bundle reference. Part XIV (Institutional Framework Alignment): major expansion from four frameworks to organized coverage of 95+ frameworks organized by primitive; added sections for US federal education (ESSA/WWC/EIR), US federal workforce and human services (WIOA, SNAP-Ed, Head Start, AmeriCorps, CSBG ROMA), US federal health programs (SAMHSA, HRSA UDS, Ryan White, LIHEAP), environmental and carbon finance (IUCN NbS, Verra VCS, REDD+, Gold Standard), Islamic and endowment-based giving (AAOIFI), European philanthropy (ESIF, EVPA, PHINEO IOOI), faith-based development (CRS ProPack, World Vision LEAP, USCCB/CCHD), and new primitives documentation. Version reference updated from 0.3.7 to 0.4.7. |
 | 0.4.0 | 2026-05-18 | Major revision to encode CROSS v0.3.5 through v0.3.7. Added Part IVa (Public Benefit Mechanism and Access Condition Declaration Procedure) with four mechanism types, mechanism-evidence scope alignment table, and finding vocabulary. Added Part IVb (Revenue Architecture, Governance Resilience, and Development Stage Procedures) with four revenue architecture types, three governance resilience states, and five development stage classifications with stage-obligation mode and stage-round alignment consistency checks. Added Obligation Fulfillment Record section to Part IV for returning applicants, with three fulfillment states and corroboration note. Added Field 5 (Disbursement Authority Declaration) to Part IV with three disbursement states. Added corroborating evidence requirement to Part V Element 2 (Sufficiency Position) for rounds at independent review evidence strength or above. Added token event disclosure requirement to Part XII Section 1 covering IDOs, TGEs, ICOs, and pending tokenomics. Added IMP Contribution vocabulary to Part XII Section 1 as optional structured additionality framework with three positions and counterfactual requirement. Added operations 21, 22, 23 to Runtime Sequence. Updated Part III First Step preamble to include PBM declaration as third pre-condition. Updated version reference from 0.3.4 to 0.3.7. |
 | 0.3.0 | 2026-05-18 | Major revision to encode CROSS v0.3.4. Added Part IV (Organizational Identity Declaration Procedure) and Part V (Sufficiency Architecture Declaration Procedure) as pre-conditions for all entry gate assessments. Added Part VI (Prior Work Attribution Assessment). Added Part XII (Scope Attribution and Outcome Credit), encoding additionality declaration and outcome credit attribution requirements. Added Part XIII (Program-Level ToC Architecture Configuration), encoding the pathway registry, round linkage, and all pathway-level tags. Added Part XIV (Institutional Framework Alignment), encoding OECD DAC, IRIS+, USAID PIRS, and DAOIP-5 mappings including full PIRS field-by-field mapping. Added Part XVI (Funder Obligation Compliance Check), encoding funder publication requirements, record maintenance, structured dataset publication, and redress mechanisms. Expanded Part VIII (Conflict of Interest) to include organizational role conflict, funder-side consulting conflicts with tiered treatment, and attestation integrity provision for both Tier 1 and Tier 2 conflicts. Expanded Part XI (Gate Evidence Assessment) with developmental vs. summative gate function distinction, pre-award indicator confirmation, counterfactual verification procedure, attribution vs. contribution stance distinction, continuation gate procedure, and unintended outcomes disclosure requirement. Added sustainability and transition plan optional field to Part VII. Added on-chain execution and verification instruments sub-specification to Part VII. Added causality stance finding vocabulary to canonical vocabulary. Updated Runtime Sequence to list all 20 operations. Updated Part XV (Recommendation Generation) reasoning structure to include organizational identity, sufficiency architecture, and prior work attribution findings. Updated Standing Obligations to include new pre-conditions. |
