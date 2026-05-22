@@ -3,7 +3,7 @@ title: Head Start Program Performance Standards Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.5 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.5 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - 45 CFR Part 1302 (ecfr.gov/current/title-45/subtitle-B/chapter-XIII/subchapter-B/part-1302)
   - Head Start Early Learning Outcomes Framework (headstart.gov/school-readiness/article/head-start-early-learning-outcomes-framework)
@@ -75,4 +75,4 @@ For the PIR's demographic fields, WALKRI's pre-publication audit confirms that t
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
