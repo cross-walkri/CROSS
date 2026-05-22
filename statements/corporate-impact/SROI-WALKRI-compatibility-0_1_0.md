@@ -3,7 +3,7 @@ title: SROI / Social Value International Principles Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.0 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.0 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - Social Value International, SROI Principles and Standards, socialvalueint.org
   - Social Return on Investment methodology overview, https://www.betterevaluation.org/methods-approaches/approaches/social-return-investment
@@ -126,9 +126,9 @@ Organizations conducting SROI analyses or producing social value accounts under 
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 Social Value International: socialvalueint.org
 
