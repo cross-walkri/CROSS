@@ -3,7 +3,7 @@ title: Caritas Internationalis Management Standards (CIMS) Compatibility - CROSS
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.4 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.4 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - https://www.caritas.org/wp-content/uploads/2025/10/Revised-Caritas-Internationalis-Management-Standards-2021.pdf
   - https://ics.crs.org/resource/caritas-internationalis-management-standards-accountability-framework
@@ -64,4 +64,4 @@ In a safeguarding context, this is especially consequential. WALKRI-compliant in
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
