@@ -3,7 +3,7 @@ title: NCRP Criteria for Philanthropy at Its Best and Racial Equity Grantmaking 
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.2 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.2 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - https://ncrp.org/criteria-for-philanthropy-at-its-best/
   - https://racialequity.org/wp-content/uploads/2020/01/GWARJL_15.pdf
@@ -61,4 +61,4 @@ This matters for both frameworks. For NCRP, it means that population-disaggregat
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
