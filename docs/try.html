@@ -128,6 +128,50 @@
     }
     .mode-btn.active .mode-tag { color: var(--cyan-dark); }
 
+    /* Round config import panel */
+    .round-config-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+    .round-config-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .round-config-header:hover { background: var(--bg-elevated); }
+    .round-config-title { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
+    .round-config-title span { color: var(--cyan); margin-right: 0.4rem; }
+    .round-config-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(139,92,246,0.15);
+      border: 1px solid rgba(139,92,246,0.3);
+      border-radius: 6px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.75rem;
+      color: #c4b5fd;
+    }
+    .round-config-badge .clear-btn {
+      background: none;
+      border: none;
+      color: #a78bfa;
+      cursor: pointer;
+      font-size: 0.9rem;
+      line-height: 1;
+      padding: 0;
+    }
+    .round-config-body { padding: 0.75rem 1rem; border-top: 1px solid var(--border); }
+    .round-config-body p { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.6rem; }
+    .round-config-error { font-size: 0.78rem; color: #f87171; margin-top: 0.4rem; }
+    .round-config-actions { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+
     .input-section { margin-bottom: 1rem; }
     textarea {
       width: 100%;
@@ -144,6 +188,7 @@
     }
     textarea:focus { border-color: var(--cyan-dark); }
     textarea::placeholder { color: var(--muted); }
+    textarea.mono { font-family: monospace; font-size: 0.82rem; min-height: 90px; }
 
     .submit-btn {
       width: 100%;
@@ -159,6 +204,20 @@
     }
     .submit-btn:hover { background: var(--cyan); color: var(--bg); }
     .submit-btn:disabled { background: var(--bg-elevated); color: var(--muted); cursor: not-allowed; }
+
+    .action-btn {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 0.4rem 0.85rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .action-btn:hover { color: var(--text); border-color: var(--cyan-dark); }
+    .action-btn.primary { background: var(--violet); border-color: var(--violet); color: #fff; }
+    .action-btn.primary:hover { background: #7c3aed; }
 
     .error-msg { color: #f87171; font-size: 0.875rem; margin-top: 0.75rem; }
     .loading { color: var(--muted); font-size: 0.875rem; margin-top: 0.75rem; }
@@ -241,6 +300,25 @@
       </button>
     </div>
 
+    <!-- Round config import panel, shown only in conform mode -->
+    <div class="round-config-panel" id="roundConfigPanel" style="display:none;">
+      <div class="round-config-header" onclick="toggleRoundConfigBody()">
+        <div class="round-config-title">
+          <span>↓</span> Load a Round Config (optional)
+        </div>
+        <div id="roundConfigBadge" style="display:none;"></div>
+      </div>
+      <div class="round-config-body" id="roundConfigBody" style="display:none;">
+        <p>Paste the Round Config JSON exported from the CROSS+WALKRI Round Builder. The AI will read the obligation architecture and guide you to produce a conformant application.</p>
+        <textarea class="mono" id="roundConfigInput" placeholder='{"schema_version": "0.1.0", "obligation_mode": "build", ...}'></textarea>
+        <div class="round-config-error" id="roundConfigError" style="display:none;"></div>
+        <div class="round-config-actions">
+          <button class="action-btn primary" onclick="loadRoundConfig()">Load</button>
+          <button class="action-btn" onclick="clearRoundConfig()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
     <div class="input-section">
       <div class="section-label" id="inputLabel">Form field to audit</div>
       <textarea id="userInput" placeholder=""></textarea>
@@ -258,12 +336,14 @@
   </div>
 
   <script>
-    const API_ENDPOINT = 'https://crosswalkri-builder.vercel.app/api/chat/free'
+    var API_ENDPOINT = 'https://crosswalkri-builder.vercel.app/api/chat/free'
 
-    let currentMode = 'audit'
-    let currentProvider = 'anthropic'
+    var currentMode = 'audit'
+    var currentProvider = 'anthropic'
+    var loadedRoundConfig = null
+    var roundConfigBodyOpen = false
 
-    const modes = {
+    var modes = {
       audit: {
         label: 'Form field to audit',
         button: 'Run field audit',
@@ -274,13 +354,13 @@
         label: 'Describe your grants program',
         button: 'Generate Commit stage',
         prefix: 'ROUND DESIGNER: ',
-        placeholder: 'Describe your grants program. Include: the program type (e.g. Web3 public goods, research funding), whether you have returning projects or only new applicants, any domain focus, and how you plan to disburse funds.\n\nExample: We run a quarterly Web3 public goods round. We have returning projects from prior epochs and new applicants. We fund software tooling and research. Lump-sum disbursement.',
+        placeholder: 'Describe your grants program. Include: the program type (e.g. Web3 public goods, research funding), whether you have returning projects or only new applicants, any domain focus, and how you plan to disburse funds.',
       },
       conform: {
-        label: 'Paste the round requirements, then describe your work',
+        label: 'Describe your organization and the work you are applying to fund',
         button: 'Get conformance guidance',
         prefix: 'ROUND CONFORM: ',
-        placeholder: 'Paste or describe the round\'s published obligation requirements, then describe your organization and what you are applying to fund.\n\nExample: "Round requires: Change obligation mode, published indicator, FROM/TO state. My org: we build open-source developer tooling for Ethereum. We are applying to fund..."',
+        placeholder: 'Describe your organization and what work you are applying to fund. If you have loaded a Round Config above, focus on your work. If not, also describe the round\'s published requirements.\n\nExample: "We build open-source developer tooling for Ethereum. We are applying to fund a new library for gas estimation..."',
       },
       toc: {
         label: 'Describe your organization and the work you are funding',
@@ -290,7 +370,7 @@
       },
     }
 
-    const providerConfig = {
+    var providerConfig = {
       anthropic: {
         label: 'API Key (Anthropic)',
         placeholder: 'sk-ant-...',
@@ -305,7 +385,7 @@
       },
     }
 
-    window.onload = () => {
+    window.onload = function() {
       loadKey()
       updateModeUI()
     }
@@ -314,7 +394,7 @@
       currentProvider = p
       document.getElementById('providerAnthropic').classList.toggle('active', p === 'anthropic')
       document.getElementById('providerOpenai').classList.toggle('active', p === 'openai')
-      const cfg = providerConfig[p]
+      var cfg = providerConfig[p]
       document.getElementById('keyLabel').textContent = cfg.label
       document.getElementById('apiKey').placeholder = cfg.placeholder
       document.getElementById('keyNote').innerHTML = cfg.noteHtml
@@ -324,12 +404,12 @@
     }
 
     function loadKey() {
-      const saved = localStorage.getItem(providerConfig[currentProvider].storageKey)
+      var saved = localStorage.getItem(providerConfig[currentProvider].storageKey)
       document.getElementById('apiKey').value = saved || ''
     }
 
     function saveKey() {
-      const key = document.getElementById('apiKey').value.trim()
+      var key = document.getElementById('apiKey').value.trim()
       if (key) localStorage.setItem(providerConfig[currentProvider].storageKey, key)
     }
 
@@ -339,9 +419,16 @@
       Object.keys(ids).forEach(function(m) {
         document.getElementById(ids[m]).classList.toggle('active', m === mode)
       })
+      document.getElementById('roundConfigPanel').style.display = mode === 'conform' ? 'block' : 'none'
+      if (mode !== 'conform') {
+        clearRoundConfig()
+        roundConfigBodyOpen = false
+        document.getElementById('roundConfigBody').style.display = 'none'
+      }
       updateModeUI()
       document.getElementById('resultSection').style.display = 'none'
       document.getElementById('statusMsg').innerHTML = ''
+      document.getElementById('userInput').value = ''
     }
 
     function updateModeUI() {
@@ -349,7 +436,58 @@
       document.getElementById('inputLabel').textContent = m.label
       document.getElementById('userInput').placeholder = m.placeholder
       document.getElementById('submitBtn').textContent = m.button
-      document.getElementById('userInput').value = ''
+    }
+
+    function toggleRoundConfigBody() {
+      if (loadedRoundConfig) return
+      roundConfigBodyOpen = !roundConfigBodyOpen
+      document.getElementById('roundConfigBody').style.display = roundConfigBodyOpen ? 'block' : 'none'
+    }
+
+    function loadRoundConfig() {
+      var raw = document.getElementById('roundConfigInput').value.trim()
+      var errEl = document.getElementById('roundConfigError')
+      try {
+        var parsed = JSON.parse(raw)
+        if (!parsed.obligation_mode || !parsed.schema_version) {
+          errEl.textContent = 'Not a valid Round Config. Expected fields: schema_version, obligation_mode.'
+          errEl.style.display = 'block'
+          return
+        }
+        loadedRoundConfig = parsed
+        errEl.style.display = 'none'
+        document.getElementById('roundConfigBody').style.display = 'none'
+        roundConfigBodyOpen = false
+        var title = parsed.title || 'Round Config'
+        var mode = parsed.obligation_mode
+        var badge = document.getElementById('roundConfigBadge')
+        badge.innerHTML = '<span class="round-config-badge"><span>' + escapeHtml(title) + ' &middot; ' + escapeHtml(mode) + '</span><button class="clear-btn" onclick="event.stopPropagation();clearRoundConfig()">&#x2715;</button></span>'
+        badge.style.display = 'block'
+        var header = document.querySelector('.round-config-title')
+        header.innerHTML = '<span>&#x2713;</span> Round Config loaded'
+        header.style.color = '#a78bfa'
+        document.getElementById('userInput').placeholder = 'Describe your organization and what work you are applying to fund. The round requirements have been loaded above.'
+      } catch(e) {
+        errEl.textContent = 'Invalid JSON. Paste the full Round Config JSON.'
+        errEl.style.display = 'block'
+      }
+    }
+
+    function clearRoundConfig() {
+      loadedRoundConfig = null
+      document.getElementById('roundConfigInput').value = ''
+      document.getElementById('roundConfigError').style.display = 'none'
+      document.getElementById('roundConfigBadge').style.display = 'none'
+      document.getElementById('roundConfigBody').style.display = 'none'
+      roundConfigBodyOpen = false
+      var header = document.querySelector('.round-config-title')
+      if (header) {
+        header.innerHTML = '<span>&#x2193;</span> Load a Round Config (optional)'
+        header.style.color = ''
+      }
+      if (currentMode === 'conform') {
+        document.getElementById('userInput').placeholder = modes.conform.placeholder
+      }
     }
 
     async function submit() {
@@ -369,11 +507,14 @@
 
       var message = modes[currentMode].prefix + userText
 
+      var body = { message: message, userApiKey: apiKey, provider: currentProvider }
+      if (loadedRoundConfig) body.roundConfig = loadedRoundConfig
+
       try {
         var res = await fetch(API_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: message, userApiKey: apiKey, provider: currentProvider }),
+          body: JSON.stringify(body),
         })
 
         var data = await res.json()
