@@ -3,7 +3,7 @@ title: ISEAL Code of Good Practice Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.0 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.0 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - ISEAL Alliance Code of Good Practice for Sustainability Systems, v1.0 effective March 2024, v1.1 September 2025, https://isealcode.org/
 ---
@@ -88,9 +88,9 @@ ISEAL Code Parts 1 through 4 address governance and accountability, standard set
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 ISEAL Alliance Code of Good Practice: https://isealcode.org/
 
