@@ -3,7 +3,7 @@ title: W.K. Kellogg Foundation Evaluation Handbook and Logic Model Guide Compati
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.4 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.4 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - https://www.betterevaluation.org/sites/default/files/2022-07/EvaluationHandbook.pdf
   - https://www.betterevaluation.org/tools-resources/wk-kellogg-foundation-logic-model-guide
@@ -70,4 +70,4 @@ The Kellogg Evaluation Handbook's principle of evaluation purposiveness, that me
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
