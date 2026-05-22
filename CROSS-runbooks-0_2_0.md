@@ -326,4 +326,4 @@ All requirements from the Universal Gate Requirements section of CROSS-runbooks-
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
