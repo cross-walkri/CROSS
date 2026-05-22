@@ -3,7 +3,7 @@ title: GRI Standards Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.0 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.0 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - GRI 1: Foundation 2021, https://www.globalreporting.org/standards/
   - GRI 2: General Disclosures 2021
@@ -89,9 +89,9 @@ This declaration is a cross-reference, not a compliance claim. It records that t
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 GRI Standards: https://www.globalreporting.org/standards/
 
