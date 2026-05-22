@@ -3,7 +3,7 @@ title: Equitable Evaluation Initiative (EEF) Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.2 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.2 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - Equitable Evaluation Framework, https://www.equitableeval.org/framework
   - EEF Framing Paper, https://static1.squarespace.com/static/5a73584b8fd4d2dbcaa08405/t/5fbdb0633c02f22b9dc97d37/1606266980696/Equitable+Evaluation+Framework+Framing+Paper_200904.pdf
@@ -66,9 +66,9 @@ For US foundations referencing the EEF in their evaluation policies, CROSS+WALKR
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 Equitable Evaluation Framework: https://www.equitableeval.org/framework
 
