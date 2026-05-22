@@ -3,7 +3,7 @@ title: REDD+ Warsaw Framework for Forest Carbon MRV Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.4 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.4 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - https://redd.unfccc.int/fact-sheets/warsaw-framework-for-redd.html
   - https://redd.unfccc.int/fact-sheets/redd-mrv-and-results-based-payments.html
@@ -64,4 +64,4 @@ WALKRI's requirement that evidence access paths be specified at the intake stage
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
