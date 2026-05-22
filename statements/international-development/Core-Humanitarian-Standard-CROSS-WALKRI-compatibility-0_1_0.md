@@ -3,7 +3,7 @@ title: Core Humanitarian Standard Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.0 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.0 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - Core Humanitarian Standard on Quality and Accountability, 2024 edition, https://www.corehumanitarianstandard.org/the-standard
   - CHS Alliance Verification Scheme documentation
@@ -134,9 +134,9 @@ Humanitarian grant operators using CROSS+WALKRI who are subject to CHS accountab
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 Core Humanitarian Standard: https://www.corehumanitarianstandard.org/the-standard
 
