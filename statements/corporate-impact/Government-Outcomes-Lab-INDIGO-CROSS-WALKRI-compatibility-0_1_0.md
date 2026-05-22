@@ -3,7 +3,7 @@ title: INDIGO Data Specification Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.0 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.0 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - INDIGO Data Specification v0.1, Government Outcomes Lab, Blavatnik School of Government, University of Oxford, https://indigo-standard.readthedocs.io/en/latest/
 ---
@@ -84,9 +84,9 @@ For INDIGO-aligned programs, WALKRI's evidence form entries are the instrument-l
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 INDIGO Data Specification: https://indigo-standard.readthedocs.io/en/latest/
 
