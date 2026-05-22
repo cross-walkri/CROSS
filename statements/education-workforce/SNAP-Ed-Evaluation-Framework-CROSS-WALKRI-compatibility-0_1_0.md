@@ -3,7 +3,7 @@ title: SNAP-Ed Evaluation Framework Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.5 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.5 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - SNAP-Ed Evaluation Framework (FNS, USDA)
   - snaped.fns.usda.gov/snap/EvaluationFramework/SNAP-EdEvaluationFramework.pdf
@@ -69,4 +69,4 @@ Applied to the Behavior Outcome Measurement Toolkit's validated instruments, WAL
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
