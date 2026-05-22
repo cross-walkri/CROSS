@@ -3,7 +3,7 @@ title: WIOA Workforce Performance Accountability Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.5 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.5 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - Workforce Innovation and Opportunity Act, 20 USC Chapter 32
   - 20 CFR Part 677 (Performance Accountability)
@@ -72,4 +72,4 @@ The same logic applies to the measurable skill gains indicator, which has the mo
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
