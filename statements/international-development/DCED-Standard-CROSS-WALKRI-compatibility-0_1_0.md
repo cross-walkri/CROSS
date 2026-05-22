@@ -3,7 +3,7 @@ title: DCED Standard for Results Measurement Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.0 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.0 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - DCED Standard for Results Measurement, https://www.enterprise-development.org/dced-standard-results-measurement/
   - IRIS+ and DCED Interoperability, https://iris.thegiin.org/document/iris-and-the-donor-committee-for-enterprise-development/
@@ -92,9 +92,9 @@ Programs reporting to DCED Standard auditors do not need to produce separate res
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 DCED Standard for Results Measurement: https://www.enterprise-development.org/dced-standard-results-measurement/
 
