@@ -3,7 +3,7 @@ title: Participatory Budgeting Project 15 Key Metrics Compatibility - CROSS+WALK
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.2 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.2 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - https://www.participatorybudgeting.org/15-key-metrics-for-evaluating-pb/
   - https://publicagenda.org/wp-content/uploads/01-Public-Agenda-PB-Metrics.pdf
@@ -65,4 +65,4 @@ WALKRI's pre-publication audit specifies exactly who counts as a participant for
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
