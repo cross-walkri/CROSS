@@ -3,7 +3,7 @@ title: Optimism Retro Funding Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.0 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.0 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - Optimism Collective Operating Manual: https://github.com/ethereum-optimism/OPerating-manual
   - Milestones and Metrics Council Charter v0.1: https://github.com/ethereum-optimism/OPerating-manual/blob/main/Milestones%20and%20Metrics%20Council%20Charter%20v0.1.md
@@ -95,9 +95,9 @@ The result is that badgeholders evaluate contributions against metrics whose mea
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 Optimism Operating Manual: https://github.com/ethereum-optimism/OPerating-manual
 
