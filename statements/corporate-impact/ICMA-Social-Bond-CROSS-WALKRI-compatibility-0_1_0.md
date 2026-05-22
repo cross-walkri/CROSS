@@ -3,7 +3,7 @@ title: ICMA Harmonised Framework for Impact Reporting for Social Bonds Compatibi
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.0 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.0 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - ICMA Harmonised Framework for Impact Reporting for Social Bonds, updated June 2025, https://www.icmagroup.org/sustainable-finance/impact-reporting/
 ---
@@ -76,9 +76,9 @@ The ICMA annual impact report for a social bond draws on these records directly.
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 ICMA Harmonised Framework for Impact Reporting for Social Bonds: https://www.icmagroup.org/sustainable-finance/impact-reporting/
 
