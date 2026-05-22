@@ -3,7 +3,7 @@ title: OCHA Country-Based Pooled Funds Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.0 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.0 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - OCHA Country-Based Pooled Funds Global Guidelines, December 2022, https://www.unocha.org/publications/report/world/country-based-pooled-funds-global-guidelines
 ---
@@ -80,9 +80,9 @@ Field 10 accommodates CBPF sector codes by design. A CROSS-compliant grantee rec
 
 ## Further Information
 
-CROSS: github.com/cross-walkri/CROSS
+CROSS: github.com/CrossWalkri/CROSS
 
-WALKRI: github.com/cross-walkri/WALKRI
+WALKRI: github.com/CrossWalkri/WALKRI
 
 OCHA CBPF Global Guidelines: https://www.unocha.org/publications/report/world/country-based-pooled-funds-global-guidelines
 
