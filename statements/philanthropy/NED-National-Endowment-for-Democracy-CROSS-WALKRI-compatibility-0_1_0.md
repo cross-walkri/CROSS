@@ -3,7 +3,7 @@ title: National Endowment for Democracy Evaluation Framework Compatibility - CRO
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.5 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.5 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - NED 2023 Grantmaking Standard Provisions and Appendices (ned.org/publications/2023-grantmaking-standard-provisions-and-appendices/)
   - NED Evaluation Plan requirements (ned.org)
@@ -68,4 +68,4 @@ The Cumulative Assessment Report creates an additional WALKRI obligation for mul
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
