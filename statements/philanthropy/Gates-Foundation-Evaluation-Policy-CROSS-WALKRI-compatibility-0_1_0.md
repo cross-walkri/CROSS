@@ -3,7 +3,7 @@ title: Gates Foundation Evaluation Policy Compatibility - CROSS+WALKRI
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.1 (github.com/cross-walkri/CROSS), WALKRI v0.1.6 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.1 (github.com/CrossWalkri/CROSS), WALKRI v0.1.6 (github.com/CrossWalkri/WALKRI)
 references:
   - https://www.gatesfoundation.org/about/policies-and-resources/evaluation-policy
 ---
@@ -14,7 +14,7 @@ references:
 
 This statement documents structural alignment between the Gates Foundation's formal evaluation policy, "Learning for Impact," and the CROSS+WALKRI specification standards. This statement is distinct from a separate compatibility statement covering the Gates Open Access Policy, which governs data sharing obligations; that document should be consulted for questions about publication and data access requirements. This statement addresses only the evaluation policy's requirements for planning, execution, and institutional continuity of foundation-funded evaluations.
 
-CROSS v0.4.1 and WALKRI v0.1.6 are both published under CC0 at github.com/cross-walkri. The Gates Foundation Evaluation Policy is publicly available at gatesfoundation.org/about/policies-and-resources/evaluation-policy.
+CROSS v0.4.1 and WALKRI v0.1.6 are both published under CC0 at github.com/CrossWalkri. The Gates Foundation Evaluation Policy is publicly available at gatesfoundation.org/about/policies-and-resources/evaluation-policy.
 
 ## The Gates Foundation Evaluation Policy: Core Requirements
 
