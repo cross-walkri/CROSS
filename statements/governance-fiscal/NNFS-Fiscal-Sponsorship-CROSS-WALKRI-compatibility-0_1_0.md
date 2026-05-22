@@ -3,7 +3,7 @@ title: NNFS Guidelines for Comprehensive Fiscal Sponsorship Compatibility - CROS
 version: 0.1.0
 date: 2026-05-18
 license: CC0
-standards: CROSS v0.4.3 (github.com/cross-walkri/CROSS), WALKRI v0.1.7 (github.com/cross-walkri/WALKRI)
+standards: CROSS v0.4.3 (github.com/CrossWalkri/CROSS), WALKRI v0.1.7 (github.com/CrossWalkri/WALKRI)
 references:
   - https://www.fiscalsponsors.org/nnfs-guidelines
   - https://s3.amazonaws.com/nnfs/file_assets/d0758100838a/NNFS%20Guidelines%20for%20Comprehensive%20Fiscal%20Sponsorship.pdf
@@ -66,4 +66,4 @@ In the Web3 and public goods context, where fiscal sponsorship through platforms
 
 ---
 
-*Published under CC0. For the current version of CROSS and WALKRI, see github.com/cross-walkri.*
+*Published under CC0. For the current version of CROSS and WALKRI, see github.com/CrossWalkri.*
